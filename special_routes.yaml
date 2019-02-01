@@ -1,0 +1,7 @@
+- :content_id: '16ca5ac1-7df5-4137-9f83-0270fcfc8bb5'
+  :base_path: '/api/content'
+  :title: 'Content API'
+  :description: 'API exposing all content on GOV.UK.'
+  :type: 'prefix'
+  :publishing_app: 'special-route-publisher'
+  :rendering_app: 'content-store'
