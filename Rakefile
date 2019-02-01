@@ -7,6 +7,7 @@ task :lint do
   sh "bundle exec govuk-lint-ruby --format clang"
 end
 
+# rubocop:disable Metrics/BlockLength
 desc 'Publish special routes to the Publishing API'
 task :publish_special_routes do
   require 'gds_api/publishing_api_v2'
@@ -48,5 +49,6 @@ task :publish_special_routes do
     publishing_api.publish(route.fetch(:content_id))
   end
 end
+# rubocop:enable Metrics/BlockLength
 
 task default: [:spec]
