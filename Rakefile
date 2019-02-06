@@ -16,4 +16,4 @@ task :publish_special_routes do
   SpecialRoutePublisher.publish_special_routes
 end
 
-task default: [:spec]
+task default: [:spec, :lint]
