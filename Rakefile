@@ -25,6 +25,16 @@ task :publish_special_routes do
   special_routes.each do |route|
     logger.info("Publishing #{route.fetch(:type)} route #{route.fetch(:base_path)}, routing to #{route.fetch(:rendering_app)}...")
 
+    # Always request a path reservation before publishing the special route,
+    # with the flag to override any existing publishing app.
+    # This allows for routes that were previously published by other apps to
+    # be added to `special_routes.yaml` and "just work".
+    publishing_api.put_path(
+      route.fetch(:base_path),
+      publishing_app: route.fetch(:publishing_app),
+      override_existing: true
+    )
+
     publishing_api.put_content(
       route.fetch(:content_id),
       base_path: route.fetch(:base_path),
