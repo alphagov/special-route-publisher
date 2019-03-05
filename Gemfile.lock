@@ -12,7 +12,7 @@ GEM
     domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
     ffi (1.10.0)
-    gds-api-adapters (57.4.1)
+    gds-api-adapters (57.4.2)
       addressable
       link_header
       null_logger
@@ -48,7 +48,7 @@ GEM
     psych (3.1.0)
     public_suffix (3.0.3)
     rack (2.0.6)
-    rack-cache (1.8.0)
+    rack-cache (1.9.0)
       rack (>= 0.4)
     rainbow (3.0.0)
     rake (12.3.2)
