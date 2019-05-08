@@ -12,7 +12,7 @@ GEM
     domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
     ffi (1.10.0)
-    gds-api-adapters (59.1.0)
+    gds-api-adapters (59.2.0)
       addressable
       link_header
       null_logger
@@ -91,7 +91,7 @@ GEM
       sass (~> 3.5, >= 3.5.5)
     unf (0.1.4)
       unf_ext
-    unf_ext (0.0.7.5)
+    unf_ext (0.0.7.6)
     unicode-display_width (1.5.0)
     webmock (3.5.1)
       addressable (>= 2.3.6)
