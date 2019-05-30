@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'gds-api-adapters', '~> 59'
-gem 'plek', '~> 2.1'
+gem 'plek', '~> 3.0'
 gem 'rake', '~> 12.3'
 
 group :development, :test do
