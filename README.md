@@ -1,6 +1,6 @@
 # Special Route Publisher
 
-Publishes special routes to the Publishing API on behalf of other apps.
+Publishes a special route to the Publishing API.
 
 ## Running the rake task
 
