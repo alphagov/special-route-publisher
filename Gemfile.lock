@@ -12,7 +12,7 @@ GEM
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
     ffi (1.11.1)
-    gds-api-adapters (59.6.0)
+    gds-api-adapters (60.0.0)
       addressable
       link_header
       null_logger
@@ -25,6 +25,7 @@ GEM
       rubocop-rspec (~> 1.28)
       scss_lint
     hashdiff (1.0.0)
+    http-accept (1.7.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     jaro_winkler (1.5.3)
@@ -54,7 +55,8 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
-    rest-client (2.0.2)
+    rest-client (2.1.0)
+      http-accept (>= 1.7.0, < 2.0)
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
@@ -106,7 +108,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  gds-api-adapters (~> 59)
+  gds-api-adapters (~> 60)
   govuk-lint (~> 3.11)
   plek (~> 3.0)
   pry-byebug
