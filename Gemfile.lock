@@ -99,7 +99,7 @@ GEM
       unf_ext
     unf_ext (0.0.7.6)
     unicode-display_width (1.6.0)
-    webmock (3.6.2)
+    webmock (3.7.0)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
@@ -114,7 +114,7 @@ DEPENDENCIES
   pry-byebug
   rake (~> 12.3)
   rspec (~> 3.8)
-  webmock (~> 3.6)
+  webmock (~> 3.7)
 
 BUNDLED WITH
    1.16.2
