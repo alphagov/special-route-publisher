@@ -25,7 +25,7 @@ class SpecialRoutePublisher
         # be added to `special_routes.yaml` and "just work".
         publishing_api.put_path(
           route.fetch(:base_path),
-          publishing_app: route.fetch(:publishing_app),
+          publishing_app: "special-route-publisher",
           override_existing: true
         )
 
@@ -44,7 +44,7 @@ class SpecialRoutePublisher
               type: type,
             }
           ],
-          publishing_app: route.fetch(:publishing_app),
+          publishing_app: "special-route-publisher",
           rendering_app: route.fetch(:rendering_app),
           public_updated_at: time.now.iso8601,
           update_type: route.fetch(:update_type, 'major')

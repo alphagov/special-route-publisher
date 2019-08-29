@@ -17,7 +17,6 @@ RSpec.describe SpecialRoutePublisher, '#publish_special_routes' do
       title: 'Content API',
       description: 'API exposing all content on GOV.UK.',
       type: 'prefix',
-      publishing_app: 'special-route-publisher',
       rendering_app: 'content-store'
     }
   end
@@ -27,7 +26,6 @@ RSpec.describe SpecialRoutePublisher, '#publish_special_routes' do
       content_id: SecureRandom.uuid,
       base_path: '/typeless-path',
       title: 'Typeless',
-      publishing_app: 'special-route-publisher',
       rendering_app: 'content-store'
     }
   end
