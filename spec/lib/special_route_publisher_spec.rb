@@ -5,7 +5,10 @@ RSpec.describe SpecialRoutePublisher, '#publish_special_routes' do
   let(:publishing_api_endpoint) { Plek.find("publishing-api") }
 
   let(:logger) { double("logger") }
-  before { allow(Logger).to receive(:new).and_return(logger) }
+  before do
+    allow(Logger).to receive(:new).and_return(logger)
+    allow(logger).to receive(:info)
+  end
 
   let(:api_content_route) do
     {
@@ -14,6 +17,16 @@ RSpec.describe SpecialRoutePublisher, '#publish_special_routes' do
       title: 'Content API',
       description: 'API exposing all content on GOV.UK.',
       type: 'prefix',
+      publishing_app: 'special-route-publisher',
+      rendering_app: 'content-store'
+    }
+  end
+
+  let(:typeless_route) do
+    {
+      content_id: SecureRandom.uuid,
+      base_path: '/typeless-path',
+      title: 'Typeless',
       publishing_app: 'special-route-publisher',
       rendering_app: 'content-store'
     }
@@ -49,6 +62,23 @@ RSpec.describe SpecialRoutePublisher, '#publish_special_routes' do
       expect(stub_put_path).to have_been_requested
       expect(stub_put_content).to have_been_requested
       expect(stub_publish_content).to have_been_requested
+    end
+
+    context "without a specific type" do
+      let(:routes) { [typeless_route] }
+
+      it "calls the Publishing API with an exact type" do
+        stub_request(:put, "#{publishing_api_endpoint}/paths#{typeless_route.fetch(:base_path)}")
+
+        stub_put_content = stub_request(:put, "#{publishing_api_endpoint}/v2/content/#{typeless_route.fetch(:content_id)}")
+          .with(body: hash_including("routes" => [{ "path" => "/typeless-path", "type" => "exact" }]))
+
+        stub_request(:post, "#{publishing_api_endpoint}/v2/content/#{typeless_route.fetch(:content_id)}/publish")
+
+        described_class.publish_special_routes
+
+        expect(stub_put_content).to have_been_requested
+      end
     end
   end
 

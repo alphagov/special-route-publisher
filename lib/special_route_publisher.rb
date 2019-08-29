@@ -15,7 +15,9 @@ class SpecialRoutePublisher
     # rubocop:disable Metrics/BlockLength
     special_routes.each do |route|
       begin
-        logger.info("Publishing #{route.fetch(:type)} route #{route.fetch(:base_path)}, routing to #{route.fetch(:rendering_app)}...")
+        type = route.fetch(:type, "exact")
+
+        logger.info("Publishing #{type} route #{route.fetch(:base_path)}, routing to #{route.fetch(:rendering_app)}...")
 
         # Always request a path reservation before publishing the special route,
         # with the flag to override any existing publishing app.
@@ -39,7 +41,7 @@ class SpecialRoutePublisher
           routes: [
             {
               path: route.fetch(:base_path),
-              type: route.fetch(:type),
+              type: type,
             }
           ],
           publishing_app: route.fetch(:publishing_app),
