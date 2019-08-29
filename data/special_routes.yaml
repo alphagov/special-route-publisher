@@ -5,18 +5,21 @@
   :type: 'prefix'
   :publishing_app: 'special-route-publisher'
   :rendering_app: 'content-store'
+
 - :content_id: '1102fd2b-7b29-43f5-889b-3e781e09971f'
   :base_path: '/get-ready-brexit-check/questions'
   :title: 'Get ready for Brexit: check what you need to do'
   :type: 'exact'
   :publishing_app: 'special-route-publisher'
   :rendering_app: 'finder-frontend'
+
 - :content_id: '2c73a7e4-2473-4215-8257-04ebe73ca1bc'
   :base_path: '/get-ready-brexit-check/results'
   :title: 'Your results: what you need to do to prepare for Brexit'
   :type: 'exact'
   :publishing_app: 'special-route-publisher'
   :rendering_app: 'finder-frontend'
+
 - :content_id: '0593033b-f713-41c5-bc67-90545091805c'
   :base_path: '/get-ready-brexit-check/email-signup'
   :title: 'Email signup: what you need to do to prepare for Brexit'
