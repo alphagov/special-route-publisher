@@ -1,13 +1,13 @@
-require 'gds_api/publishing_api_v2'
-require 'time'
-require 'yaml'
+require "gds_api/publishing_api_v2"
+require "time"
+require "yaml"
 
 class SpecialRoutePublisher
   def self.publish_special_routes
     logger = Logger.new(STDOUT)
     publishing_api = GdsApi::PublishingApiV2.new(
-      Plek.find('publishing-api'),
-      bearer_token: ENV.fetch('PUBLISHING_API_BEARER_TOKEN', 'example')
+      Plek.find("publishing-api"),
+      bearer_token: ENV.fetch("PUBLISHING_API_BEARER_TOKEN", "example"),
     )
     time = (Time.respond_to?(:zone) && Time.zone) || Time
     special_routes = load_special_routes
@@ -26,28 +26,28 @@ class SpecialRoutePublisher
         publishing_api.put_path(
           route.fetch(:base_path),
           publishing_app: "special-route-publisher",
-          override_existing: true
+          override_existing: true,
         )
 
         publishing_api.put_content(
           route.fetch(:content_id),
           base_path: route.fetch(:base_path),
-          document_type: 'special_route',
-          schema_name: 'special_route',
+          document_type: "special_route",
+          schema_name: "special_route",
           title: route.fetch(:title),
-          description: route.fetch(:description, ''),
-          locale: 'en',
+          description: route.fetch(:description, ""),
+          locale: "en",
           details: {},
           routes: [
             {
               path: route.fetch(:base_path),
               type: type,
-            }
+            },
           ],
           publishing_app: "special-route-publisher",
           rendering_app: route.fetch(:rendering_app),
           public_updated_at: time.now.iso8601,
-          update_type: route.fetch(:update_type, 'major')
+          update_type: route.fetch(:update_type, "major"),
         )
 
         publishing_api.publish(route.fetch(:content_id))
@@ -59,7 +59,7 @@ class SpecialRoutePublisher
   end
 
   def self.load_special_routes
-    YAML.load_file('./data/special_routes.yaml')
+    YAML.load_file("./data/special_routes.yaml")
   end
   private_class_method :load_special_routes
 end
