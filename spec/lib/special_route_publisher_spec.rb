@@ -1,7 +1,7 @@
-require_relative '../../lib/special_route_publisher'
-require 'securerandom'
+require_relative "../../lib/special_route_publisher"
+require "securerandom"
 
-RSpec.describe SpecialRoutePublisher, '#publish_special_routes' do
+RSpec.describe SpecialRoutePublisher, "#publish_special_routes" do
   let(:publishing_api_endpoint) { Plek.find("publishing-api") }
 
   let(:logger) { double("logger") }
@@ -12,28 +12,28 @@ RSpec.describe SpecialRoutePublisher, '#publish_special_routes' do
 
   let(:api_content_route) do
     {
-      content_id: '16ca5ac1-7df5-4137-9f83-0270fcfc8bb5',
-      base_path: '/api/content',
-      title: 'Content API',
-      description: 'API exposing all content on GOV.UK.',
-      type: 'prefix',
-      rendering_app: 'content-store'
+      content_id: "16ca5ac1-7df5-4137-9f83-0270fcfc8bb5",
+      base_path: "/api/content",
+      title: "Content API",
+      description: "API exposing all content on GOV.UK.",
+      type: "prefix",
+      rendering_app: "content-store",
     }
   end
 
   let(:typeless_route) do
     {
       content_id: SecureRandom.uuid,
-      base_path: '/typeless-path',
-      title: 'Typeless',
-      rendering_app: 'content-store'
+      base_path: "/typeless-path",
+      title: "Typeless",
+      rendering_app: "content-store",
     }
   end
 
   let(:invalid_route) do
     {
       content_id: SecureRandom.uuid,
-      base_path: '/something-that-doesnt-matter'
+      base_path: "/something-that-doesnt-matter",
     }
   end
 
@@ -44,7 +44,7 @@ RSpec.describe SpecialRoutePublisher, '#publish_special_routes' do
   context "with a valid route" do
     let(:routes) { [api_content_route] }
 
-    it 'calls the Publishing API to reserve a path, put content and publish it' do
+    it "calls the Publishing API to reserve a path, put content and publish it" do
       stub_put_path = stub_request(:put, "#{publishing_api_endpoint}/paths#{api_content_route.fetch(:base_path)}")
         .with(body: "{\"publishing_app\":\"special-route-publisher\",\"override_existing\":true}")
 
@@ -83,7 +83,7 @@ RSpec.describe SpecialRoutePublisher, '#publish_special_routes' do
   context "with an invalid route" do
     let(:routes) { [invalid_route] }
 
-    it 'logs an error message and carries on' do
+    it "logs an error message and carries on" do
       expect(logger).to receive(:error).with(/Unable/)
 
       described_class.publish_special_routes
