@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 gem "gds-api-adapters", "~> 60"
 gem "plek", "~> 3.0"
-gem "rake", "~> 12.3"
+gem "rake", "~> 13.0"
 
 group :development, :test do
   gem "govuk-lint", "~> 4.0"
