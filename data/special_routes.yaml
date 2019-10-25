@@ -50,6 +50,11 @@
   :title: 'Register as an organisation which gets funding directly from the EU'
   :rendering_app: 'frontend'
 
+- :content_id: '097322ee-d651-47e5-b390-cb72b4661b94'
+  :base_path: '/brexit-eu-funding/does-the-project-have-partners-or-participants-outside-the-uk'
+  :title: 'Register as an organisation which gets funding directly from the EU'
+  :rendering_app: 'frontend'
+
 - :content_id: 'dbd71f0f-1014-423e-b786-10ec53cd6845'
   :base_path: '/brexit-eu-funding/check-your-answers'
   :title: 'Register as an organisation which gets funding directly from the EU'
