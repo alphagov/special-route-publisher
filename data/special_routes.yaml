@@ -34,6 +34,11 @@
   :base_path: '/brexit-eu-funding/organisation-details'
   :title: 'Register as an organisation which gets funding directly from the EU'
   :rendering_app: 'frontend'
+  
+- :content_id: '2d52b223-2fae-4a43-9f15-af5c36d9883d'
+  :base_path: '/brexit-eu-funding/do-you-have-a-companies-house-or-charity-commission-number'
+  :title: 'Register as an organisation which gets funding directly from the EU'
+  :rendering_app: 'frontend'
 
 - :content_id: 'c422b6e0-4f0c-460b-9452-6519eefbef26'
   :base_path: '/brexit-eu-funding/do-you-have-a-grant-agreement-number'
