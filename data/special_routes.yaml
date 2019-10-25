@@ -36,7 +36,7 @@
   :rendering_app: 'frontend'
 
 - :content_id: 'c422b6e0-4f0c-460b-9452-6519eefbef26'
-  :base_path: '/brexit-eu-funding/what-is-the-grant-agreement-number'
+  :base_path: '/brexit-eu-funding/do-you-have-a-grant-agreement-number'
   :title: 'Register as an organisation which gets funding directly from the EU'
   :rendering_app: 'frontend'
 
