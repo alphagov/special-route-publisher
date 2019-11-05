@@ -5,7 +5,7 @@ gem "plek", "~> 3.0"
 gem "rake", "~> 13.0"
 
 group :development, :test do
-  gem "govuk-lint", "~> 4.1"
+  gem "govuk-lint", "~> 4.2"
   gem "pry-byebug"
   gem "rspec", "~> 3.9"
   gem "webmock", "~> 3.7"
