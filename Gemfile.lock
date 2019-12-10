@@ -12,7 +12,7 @@ GEM
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
     ffi (1.11.2)
-    gds-api-adapters (62.0.0)
+    gds-api-adapters (63.0.0)
       addressable
       link_header
       null_logger
@@ -107,7 +107,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  gds-api-adapters (~> 62)
+  gds-api-adapters (~> 63)
   govuk-lint (~> 4.3)
   plek (~> 3.0)
   pry-byebug
