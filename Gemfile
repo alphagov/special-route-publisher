@@ -8,5 +8,5 @@ group :development, :test do
   gem "govuk-lint", "~> 4.3"
   gem "pry-byebug"
   gem "rspec", "~> 3.9"
-  gem "webmock", "~> 3.7"
+  gem "webmock", "~> 3.8"
 end
