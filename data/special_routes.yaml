@@ -5,19 +5,19 @@
   :type: 'prefix'
   :rendering_app: 'content-store'
 
-- :content_id: '1102fd2b-7b29-43f5-889b-3e781e09971f'
-  :base_path: '/get-ready-brexit-check/questions'
-  :title: 'Get ready for Brexit: check what you need to do'
+- :content_id: '74738e19-d036-48a4-9a35-d0bc40e3fcbc'
+  :base_path: '/transition-check/questions'
+  :title: 'Transition period: check what you need to do now'
   :rendering_app: 'finder-frontend'
 
-- :content_id: '2c73a7e4-2473-4215-8257-04ebe73ca1bc'
-  :base_path: '/get-ready-brexit-check/results'
-  :title: 'Your results: what you need to do to prepare for Brexit'
+- :content_id: '7deab9d4-3a41-42e0-b069-6e20b854eb4b'
+  :base_path: '/transition-check/results'
+  :title: 'Transition period: check what you need to do now'
   :rendering_app: 'finder-frontend'
 
-- :content_id: '0593033b-f713-41c5-bc67-90545091805c'
-  :base_path: '/get-ready-brexit-check/email-signup'
-  :title: 'Email signup: what you need to do to prepare for Brexit'
+- :content_id: '14640462-c09e-45be-ac09-2e1e13a100fa'
+  :base_path: '/transition-check/email-signup'
+  :title: 'Transition period: sign up for email alerts'
   :rendering_app: 'finder-frontend'
 
 - :content_id: 'fe29ccb9-99c5-4727-a64e-57aa4a44ab81'
