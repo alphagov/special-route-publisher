@@ -12,7 +12,7 @@ GEM
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
     ffi (1.11.2)
-    gds-api-adapters (63.3.0)
+    gds-api-adapters (63.4.0)
       addressable
       link_header
       null_logger
@@ -47,7 +47,7 @@ GEM
       byebug (~> 11.0)
       pry (~> 0.10)
     public_suffix (4.0.3)
-    rack (2.1.1)
+    rack (2.2.2)
     rack-cache (1.11.0)
       rack (>= 0.4)
     rainbow (3.0.0)
