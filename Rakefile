@@ -6,14 +6,9 @@ begin
 rescue LoadError
 end
 
-desc 'Run govuk-lint with similar params to CI'
-task :lint do
-  sh "bundle exec govuk-lint-ruby --format clang lib spec"
-end
-
 desc 'Publish special routes to the Publishing API'
 task :publish_special_routes do
   SpecialRoutePublisher.publish_special_routes
 end
 
-task default: [:spec, :lint]
+task default: [:spec]
