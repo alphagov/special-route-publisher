@@ -69,3 +69,10 @@
   :base_path: '/brexit-eu-funding/confirmation'
   :title: 'Register as an organisation which gets funding directly from the EU'
   :rendering_app: 'frontend'
+
+- :content_id: '5a0ca87e-0e91-4d4c-bd26-29feb24f98ab'
+  :base_path: '/government/uploads'
+  :title: 'Government Uploads'
+  :description: 'Handles government uploads paths.'
+  :type: 'prefix'
+  :rendering_app: 'government-frontend'
