@@ -20,56 +20,6 @@
   :title: 'Transition period: sign up for email alerts'
   :rendering_app: 'finder-frontend'
 
-- :content_id: 'fe29ccb9-99c5-4727-a64e-57aa4a44ab81'
-  :base_path: '/brexit-eu-funding/who-should-we-contact-about-the-grant-award'
-  :title: 'Register as an organisation which gets funding directly from the EU'
-  :rendering_app: 'frontend'
-
-- :content_id: '7028ad9f-1a3e-4921-b0f1-d7085c7daa1b'
-  :base_path: '/brexit-eu-funding/organisation-type'
-  :title: 'Register as an organisation which gets funding directly from the EU'
-  :rendering_app: 'frontend'
-
-- :content_id: '9d76509b-7a8d-42e0-aa1a-300616dbbed8'
-  :base_path: '/brexit-eu-funding/organisation-details'
-  :title: 'Register as an organisation which gets funding directly from the EU'
-  :rendering_app: 'frontend'
-
-- :content_id: '2d52b223-2fae-4a43-9f15-af5c36d9883d'
-  :base_path: '/brexit-eu-funding/do-you-have-a-company-or-charity-registration-number'
-  :title: 'Register as an organisation which gets funding directly from the EU'
-  :rendering_app: 'frontend'
-
-- :content_id: 'c422b6e0-4f0c-460b-9452-6519eefbef26'
-  :base_path: '/brexit-eu-funding/do-you-have-a-grant-agreement-number'
-  :title: 'Register as an organisation which gets funding directly from the EU'
-  :rendering_app: 'frontend'
-
-- :content_id: '48b4c601-7c64-4c42-a8db-8b769b51a8fd'
-  :base_path: '/brexit-eu-funding/what-programme-do-you-receive-funding-from'
-  :title: 'Register as an organisation which gets funding directly from the EU'
-  :rendering_app: 'frontend'
-
-- :content_id: '72969d5e-832f-4e16-b9cb-0c9ab0fad3e4'
-  :base_path: '/brexit-eu-funding/project-details'
-  :title: 'Register as an organisation which gets funding directly from the EU'
-  :rendering_app: 'frontend'
-
-- :content_id: '097322ee-d651-47e5-b390-cb72b4661b94'
-  :base_path: '/brexit-eu-funding/does-the-project-have-partners-or-participants-outside-the-uk'
-  :title: 'Register as an organisation which gets funding directly from the EU'
-  :rendering_app: 'frontend'
-
-- :content_id: 'dbd71f0f-1014-423e-b786-10ec53cd6845'
-  :base_path: '/brexit-eu-funding/check-your-answers'
-  :title: 'Register as an organisation which gets funding directly from the EU'
-  :rendering_app: 'frontend'
-
-- :content_id: '08d52d2b-3b89-4c2c-871c-7b8b2f1c92f1'
-  :base_path: '/brexit-eu-funding/confirmation'
-  :title: 'Register as an organisation which gets funding directly from the EU'
-  :rendering_app: 'frontend'
-
 - :content_id: '5a0ca87e-0e91-4d4c-bd26-29feb24f98ab'
   :base_path: '/government/uploads'
   :title: 'Government Uploads'
