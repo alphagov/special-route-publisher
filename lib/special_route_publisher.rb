@@ -4,16 +4,15 @@ require "yaml"
 
 class SpecialRoutePublisher
   def self.publish_special_routes
-    logger = Logger.new(STDOUT)
-    publishing_api = GdsApi::PublishingApiV2.new(
-      Plek.find("publishing-api"),
-      bearer_token: ENV.fetch("PUBLISHING_API_BEARER_TOKEN", "example"),
-    )
-    time = (Time.respond_to?(:zone) && Time.zone) || Time
     special_routes = load_special_routes
+    new.publish_routes(special_routes)
+  end
+
+  def publish_routes(routes)
+    time = (Time.respond_to?(:zone) && Time.zone) || Time
 
     # rubocop:disable Metrics/BlockLength
-    special_routes.each do |route|
+    routes.each do |route|
       begin
         type = route.fetch(:type, "exact")
 
@@ -62,4 +61,15 @@ class SpecialRoutePublisher
     YAML.load_file("./data/special_routes.yaml")
   end
   private_class_method :load_special_routes
+
+  def logger
+    @logger ||= Logger.new(STDOUT)
+  end
+
+  def publishing_api
+    @publishing_api ||= GdsApi::PublishingApiV2.new(
+      Plek.find("publishing-api"),
+      bearer_token: ENV.fetch("PUBLISHING_API_BEARER_TOKEN", "example"),
+    )
+  end
 end
