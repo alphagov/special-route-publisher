@@ -4,3 +4,4 @@
   :description: 'Find out about the government response to coronavirus (COVID-19) and what you need to do.'
   :type: 'exact'
   :rendering_app: 'collections'
+  :document_type: 'answer'
