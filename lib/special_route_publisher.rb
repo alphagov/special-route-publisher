@@ -4,16 +4,23 @@ require "yaml"
 
 class SpecialRoutePublisher
   def self.publish_special_routes
-    logger = Logger.new(STDOUT)
-    publishing_api = GdsApi::PublishingApiV2.new(
-      Plek.find("publishing-api"),
-      bearer_token: ENV.fetch("PUBLISHING_API_BEARER_TOKEN", "example"),
-    )
+    new.publish_routes(load_special_routes)
+  end
+
+  def self.publish_coronavirus_routes
+    new.publish_routes(load_coronavirus_routes)
+  end
+
+  def self.minor_update_coronavirus_routes
+    minor_update_routes = load_coronavirus_routes.map { |route| route.merge(update_type: "minor") }
+    new.publish_routes(minor_update_routes)
+  end
+
+  def publish_routes(routes)
     time = (Time.respond_to?(:zone) && Time.zone) || Time
-    special_routes = load_special_routes
 
     # rubocop:disable Metrics/BlockLength
-    special_routes.each do |route|
+    routes.each do |route|
       begin
         type = route.fetch(:type, "exact")
 
@@ -32,8 +39,8 @@ class SpecialRoutePublisher
         publishing_api.put_content(
           route.fetch(:content_id),
           base_path: route.fetch(:base_path),
-          document_type: "special_route",
-          schema_name: "special_route",
+          document_type: route.fetch(:document_type, "special_route"),
+          schema_name: route.fetch(:document_type, "special_route"),
           title: route.fetch(:title),
           description: route.fetch(:description, ""),
           locale: "en",
@@ -61,5 +68,19 @@ class SpecialRoutePublisher
   def self.load_special_routes
     YAML.load_file("./data/special_routes.yaml")
   end
-  private_class_method :load_special_routes
+
+  def self.load_coronavirus_routes
+    YAML.load_file("./data/coronavirus_routes.yaml")
+  end
+
+  def logger
+    @logger ||= Logger.new(STDOUT)
+  end
+
+  def publishing_api
+    @publishing_api ||= GdsApi::PublishingApiV2.new(
+      Plek.find("publishing-api"),
+      bearer_token: ENV.fetch("PUBLISHING_API_BEARER_TOKEN", "example"),
+    )
+  end
 end
