@@ -7,15 +7,6 @@ class SpecialRoutePublisher
     new.publish_routes(load_special_routes)
   end
 
-  def self.publish_coronavirus_routes
-    new.publish_routes(load_coronavirus_routes)
-  end
-
-  def self.minor_update_coronavirus_routes
-    minor_update_routes = load_coronavirus_routes.map { |route| route.merge(update_type: "minor") }
-    new.publish_routes(minor_update_routes)
-  end
-
   def publish_routes(routes)
     time = (Time.respond_to?(:zone) && Time.zone) || Time
 
@@ -67,10 +58,6 @@ class SpecialRoutePublisher
 
   def self.load_special_routes
     YAML.load_file("./data/special_routes.yaml")
-  end
-
-  def self.load_coronavirus_routes
-    YAML.load_file("./data/coronavirus_routes.yaml")
   end
 
   def logger
