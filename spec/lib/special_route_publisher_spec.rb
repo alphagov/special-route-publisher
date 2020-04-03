@@ -91,34 +91,4 @@ RSpec.describe SpecialRoutePublisher, "#publish_special_routes" do
       end
     end
   end
-
-  context "minor routes coronavirus task" do
-    let(:a_route) do
-      {
-        content_id: SecureRandom.uuid,
-        base_path: "/a-path",
-        title: "A title",
-        rendering_app: "collections",
-        update_type: "major",
-      }
-    end
-    let(:routes) { [a_route] }
-
-    before do
-      allow(SpecialRoutePublisher).to receive(:load_coronavirus_routes).and_return(routes)
-    end
-
-    it "calls the Publishing API with a minor update type" do
-      stub_request(:put, "#{publishing_api_endpoint}/paths#{a_route.fetch(:base_path)}")
-
-      stub_put_content = stub_request(:put, "#{publishing_api_endpoint}/v2/content/#{a_route.fetch(:content_id)}")
-        .with(body: hash_including("update_type" => "minor"))
-
-      stub_request(:post, "#{publishing_api_endpoint}/v2/content/#{a_route.fetch(:content_id)}/publish")
-
-      described_class.minor_update_coronavirus_routes
-
-      expect(stub_put_content).to have_been_requested
-    end
-  end
 end
