@@ -11,4 +11,9 @@ task :publish_special_routes do
   SpecialRoutePublisher.publish_special_routes
 end
 
-task default: [:spec]
+desc 'Lint ruby'
+task :lint do
+  sh "bundle exec rubocop --format clang"
+end
+
+task default: %i[spec lint]
