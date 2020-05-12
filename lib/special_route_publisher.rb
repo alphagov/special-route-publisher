@@ -9,8 +9,6 @@ class SpecialRoutePublisher
 
   def publish_routes(routes)
     time = (Time.respond_to?(:zone) && Time.zone) || Time
-
-    # rubocop:disable Metrics/BlockLength
     routes.each do |route|
       type = route.fetch(:type, "exact")
 
@@ -51,7 +49,6 @@ class SpecialRoutePublisher
     rescue KeyError => e
       logger.error("Unable to publish #{route} due to an error: #{e}")
     end
-    # rubocop:enable Metrics/BlockLength
   end
 
   def self.load_special_routes
