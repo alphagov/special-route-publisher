@@ -17,7 +17,7 @@ class SpecialRoutePublisher
       # Always request a path reservation before publishing the special route,
       # with the flag to override any existing publishing app.
       # This allows for routes that were previously published by other apps to
-      #  be added to `special_routes.yaml` and "just work".
+      # be added to `special_routes.yaml` and "just work".
       publishing_api.put_path(
         route.fetch(:base_path),
         publishing_app: "special-route-publisher",
