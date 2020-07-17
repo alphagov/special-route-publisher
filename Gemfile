@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem "gds-api-adapters", "~> 63"
+gem "gds-api-adapters", "~> 67"
 gem "plek", "~> 4.0"
 gem "rake", "~> 13.0"
 
