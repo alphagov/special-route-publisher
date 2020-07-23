@@ -1,4 +1,4 @@
-require "gds_api/publishing_api_v2"
+require "gds_api"
 require "time"
 require "yaml"
 
@@ -60,9 +60,6 @@ class SpecialRoutePublisher
   end
 
   def publishing_api
-    @publishing_api ||= GdsApi::PublishingApi.new(
-      Plek.find("publishing-api"),
-      bearer_token: ENV.fetch("PUBLISHING_API_BEARER_TOKEN", "example"),
-    )
+    @publishing_api ||= GdsApi.publishing_api
   end
 end
