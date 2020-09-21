@@ -115,13 +115,13 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  gds-api-adapters (~> 67)
-  plek (~> 4.0)
+  gds-api-adapters
+  plek
   pry-byebug
-  rake (~> 13.0)
-  rspec (~> 3.9)
+  rake
+  rspec
   rubocop-govuk
-  webmock (~> 3.8)
+  webmock
 
 BUNDLED WITH
-   1.17.2
+   1.17.3
