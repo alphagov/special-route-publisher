@@ -7,6 +7,16 @@ class SpecialRoutePublisher
     new.publish_routes(load_special_routes)
   end
 
+  def self.publish_one_route(base_path)
+    routes = load_special_routes.select { |route| route[:base_path] == base_path }
+
+    if routes.any?
+      new.publish_routes(routes)
+    else
+      puts "Route needs to be added to /data/special_routes.yaml"
+    end
+  end
+
   def publish_routes(routes)
     time = (Time.respond_to?(:zone) && Time.zone) || Time
     routes.each do |route|
