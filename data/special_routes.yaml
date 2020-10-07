@@ -26,3 +26,8 @@
   :description: 'Handles government uploads paths.'
   :type: 'prefix'
   :rendering_app: 'government-frontend'
+
+- :content_id: '37a1eea3-e3b9-4bc3-8173-bc8afde9dd2d'
+  :base_path: '/find-coronavirus-local-restrictions'
+  :title: 'Find out the coronavirus restrictions in a local area'
+  :rendering_app: 'collections'
