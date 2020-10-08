@@ -6,7 +6,7 @@ task :publish_special_routes do
 end
 
 desc "Publish a single special route to the Publishing API"
-task :publish_one_special_route, [:base_path] => :environment do |_, args|
+task :publish_one_special_route, [:base_path] do |_, args|
   SpecialRoutePublisher.publish_one_route(args.base_path)
 end
 
