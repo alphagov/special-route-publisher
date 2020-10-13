@@ -61,3 +61,5 @@
   :base_path: '/find-coronavirus-local-restrictions'
   :title: 'Find out the coronavirus restrictions in a local area'
   :rendering_app: 'collections'
+  :document_type: 'answer'
+  :description: 'Find out the Local COVID Alert Level for an area. Search by postcode.'
