@@ -40,6 +40,16 @@
   :title: 'Transition period: save results to GOV.UK Account'
   :rendering_app: 'finder-frontend'
 
+- :content_id: '5f2330c0-345c-4329-9677-d2cbe578da3e'
+  :base_path: '/transition-check/save-your-results/confirm'
+  :title: 'Transition period: save results to GOV.UK Account'
+  :rendering_app: 'finder-frontend'
+
+- :content_id: 'bd1255f0-9332-456a-8abb-833cd9877f72'
+  :base_path: '/transition-check/save-your-results/email-signup'
+  :title: 'Transition period: save results to GOV.UK Account'
+  :rendering_app: 'finder-frontend'
+
 - :content_id: 'b3395546-3a26-4321-93ae-adea88722014'
   :base_path: '/transition-check/saved-results'
   :title: 'Transition period: retrieve results from GOV.UK Account'
