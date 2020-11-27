@@ -72,4 +72,4 @@
   :title: 'Find out the coronavirus restrictions in a local area'
   :rendering_app: 'collections'
   :document_type: 'answer'
-  :description: 'Use the postcode checker to find out the Local COVID Alert Level for an area.'
+  :description: 'Use the postcode checker to find out the tier that your local area is in.'
