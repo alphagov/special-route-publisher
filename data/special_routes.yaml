@@ -40,6 +40,11 @@
   :title: 'Transition period: save results to GOV.UK Account'
   :rendering_app: 'finder-frontend'
 
+- :content_id: '6bce862e-8f1d-4e57-ad6d-c475ed3411b5'
+  :base_path: '/transition-check/save-your-results/sign-up'
+  :title: 'Transition period: save results to GOV.UK Account'
+  :rendering_app: 'finder-frontend'
+
 - :content_id: '5f2330c0-345c-4329-9677-d2cbe578da3e'
   :base_path: '/transition-check/save-your-results/confirm'
   :title: 'Transition period: save results to GOV.UK Account'
