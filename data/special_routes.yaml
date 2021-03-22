@@ -78,3 +78,8 @@
   :rendering_app: 'collections'
   :document_type: 'answer'
   :description: 'Use the postcode checker to find out the tier that your local area is in.'
+
+- :content_id: 'a8706276-f98b-4b9c-bcf7-ed7e0e20e9cb'
+  :base_path: '/alerts'
+  :title: 'Local emergency alerts'
+  :description: 'Find out what local emergency alerts are, when you’ll get them and how they work. You can also see all current and past alerts.'
