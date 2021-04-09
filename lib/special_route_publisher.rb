@@ -8,21 +8,21 @@ class SpecialRoutePublisher
   end
 
   def self.publish_one_route(base_path)
-    routes = load_special_routes.select { |route| route[:base_path] == base_path }
+    route = load_special_routes.find { |r| r[:base_path] == base_path }
 
-    if routes.any?
-      new.publish_routes(routes)
+    if route
+      new.publish_routes([route])
     else
       puts "Route needs to be added to /data/special_routes.yaml"
     end
   end
 
   def self.unpublish_one_route(base_path)
-    routes = load_special_routes.select { |route| route[:base_path] == base_path }
+    route = load_special_routes.find { |r| r[:base_path] == base_path }
 
-    if routes.any?
+    if route
       new.publishing_api.unpublish(
-        routes.first.fetch(:content_id),
+        route.fetch(:content_id),
         type: "gone",
       )
     else
