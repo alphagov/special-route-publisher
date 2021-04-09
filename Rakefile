@@ -10,6 +10,11 @@ task :publish_one_special_route, [:base_path] do |_, args|
   SpecialRoutePublisher.publish_one_route(args.base_path)
 end
 
+desc "Unpublish a single special route, with a type of 'gone'"
+task :unpublish_one_special_route, [:base_path] do |_, args|
+  SpecialRoutePublisher.unpublish_one_route(args.base_path)
+end
+
 desc "Run tests"
 task :spec do
   sh "bundle exec rspec"

@@ -90,5 +90,22 @@ RSpec.describe SpecialRoutePublisher, "#publish_special_routes" do
         described_class.publish_special_routes
       end
     end
+
+    context "unpublishing a route" do
+      let(:routes) { [api_content_route, typeless_route] }
+
+      it "unpublishes just the named route" do
+        stub_unpublish = stub_request(:post, "#{publishing_api_endpoint}/v2/content/#{typeless_route[:content_id]}/unpublish")
+          .with(body: "{\"type\":\"gone\"}")
+
+        described_class.unpublish_one_route(typeless_route[:base_path])
+
+        expect(stub_unpublish).to have_been_requested
+      end
+
+      it "doesn't call the publishing API to unpublish a route not in the routes config" do
+        described_class.unpublish_one_route("/some-base-path-not-in-the-config")
+      end
+    end
   end
 end

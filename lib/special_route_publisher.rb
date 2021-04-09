@@ -17,6 +17,19 @@ class SpecialRoutePublisher
     end
   end
 
+  def self.unpublish_one_route(base_path)
+    routes = load_special_routes.select { |route| route[:base_path] == base_path }
+
+    if routes.any?
+      new.publishing_api.unpublish(
+        routes.first.fetch(:content_id),
+        type: "gone",
+      )
+    else
+      puts "Route needs to be added to /data/special_routes.yaml"
+    end
+  end
+
   def publish_routes(routes)
     time = (Time.respond_to?(:zone) && Time.zone) || Time
     routes.each do |route|
