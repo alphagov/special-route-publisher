@@ -35,21 +35,6 @@
   :title: 'Transition period: sign up for email alerts'
   :rendering_app: 'finder-frontend'
 
-- :content_id: 'b0b1aa86-b992-4aa8-b0d8-ac9936aca660'
-  :base_path: '/transition-check/login'
-  :title: 'Transition period: login to GOV.UK Account'
-  :rendering_app: 'finder-frontend'
-
-- :content_id: 'e5977a8b-1811-424e-a59f-69b83a3ed455'
-  :base_path: '/transition-check/login/callback'
-  :title: 'Transition period: login to GOV.UK Account'
-  :rendering_app: 'finder-frontend'
-
-- :content_id: '9025d362-d5e2-4211-abac-77eb0963fe47'
-  :base_path: '/transition-check/logout'
-  :title: 'Transition period: logout from GOV.UK Account'
-  :rendering_app: 'finder-frontend'
-
 - :content_id: 'c8a24981-e4ea-478d-97a9-2d3d8700fc5e'
   :base_path: '/transition-check/save-your-results'
   :title: 'Transition period: save results to GOV.UK Account'
