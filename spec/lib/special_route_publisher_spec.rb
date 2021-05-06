@@ -102,6 +102,16 @@ RSpec.describe SpecialRoutePublisher, "#publish_special_routes" do
 
         expect(stub_unpublish).to have_been_requested
       end
+
+      it "redirects the route" do
+        alternative_path = "/hello-there"
+        stub_unpublish = stub_request(:post, "#{publishing_api_endpoint}/v2/content/#{typeless_route[:content_id]}/unpublish")
+          .with(body: "{\"type\":\"redirect\",\"alternative_path\":\"#{alternative_path}\"}")
+
+        described_class.unpublish_one_route(typeless_route[:base_path], alternative_path)
+
+        expect(stub_unpublish).to have_been_requested
+      end
     end
   end
 end
