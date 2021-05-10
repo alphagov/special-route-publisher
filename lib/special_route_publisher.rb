@@ -17,10 +17,16 @@ class SpecialRoutePublisher
     end
   end
 
-  def self.unpublish_one_route(base_path)
+  def self.unpublish_one_route(base_path, alternative_path = nil)
     route = load_special_routes.find { |r| r[:base_path] == base_path }
 
-    if route
+    if route && alternative_path
+      new.publishing_api.unpublish(
+        route.fetch(:content_id),
+        type: "redirect",
+        alternative_path: alternative_path,
+      )
+    elsif route
       new.publishing_api.unpublish(
         route.fetch(:content_id),
         type: "gone",
