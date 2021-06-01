@@ -20,6 +20,16 @@
   :title: 'Sign Out from GOV.UK'
   :rendering_app: 'frontend'
 
+- :content_id: 'e5098fc2-ad79-4c6f-882b-410831c12f60'
+  :base_path: '/account/saved-pages/add'
+  :title: 'Save a page'
+  :rendering_app: 'frontend'
+
+- :content_id: '3aeaeb46-b3c5-449b-8a3b-2753ffef3c9f'
+  :base_path: '/account/saved-pages/remove'
+  :title: 'Remove a saved page'
+  :rendering_app: 'frontend'
+
 - :content_id: '74738e19-d036-48a4-9a35-d0bc40e3fcbc'
   :base_path: '/transition-check/questions'
   :title: 'Transition period: check what you need to do now'
