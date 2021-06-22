@@ -85,7 +85,7 @@ class SpecialRoutePublisher
   end
 
   def logger
-    @logger ||= Logger.new(STDOUT)
+    @logger ||= Logger.new($stdout)
   end
 
   def publishing_api
