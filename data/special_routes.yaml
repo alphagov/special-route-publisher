@@ -20,6 +20,11 @@
   :title: 'Sign Out from GOV.UK'
   :rendering_app: 'frontend'
 
+- :content_id: 'c1f08359-21f7-49c1-8811-54bf6690b6a3'
+  :base_path: '/account/home'
+  :title: 'Account home page'
+  :rendering_app: 'frontend'
+
 - :content_id: 'e5098fc2-ad79-4c6f-882b-410831c12f60'
   :base_path: '/account/saved-pages/add'
   :title: 'Save a page'
