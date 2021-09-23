@@ -18,7 +18,7 @@ GEM
     diff-lcs (1.4.4)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
-    gds-api-adapters (73.1.0)
+    gds-api-adapters (74.0.0)
       addressable
       link_header
       null_logger
@@ -103,7 +103,7 @@ GEM
       concurrent-ruby (~> 1.0)
     unf (0.1.4)
       unf_ext
-    unf_ext (0.0.7.7)
+    unf_ext (0.0.8)
     unicode-display_width (2.1.0)
     webmock (3.13.0)
       addressable (>= 2.3.6)
