@@ -18,7 +18,7 @@ GEM
     diff-lcs (1.4.4)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
-    gds-api-adapters (74.0.0)
+    gds-api-adapters (75.0.0)
       addressable
       link_header
       null_logger
