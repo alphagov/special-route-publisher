@@ -30,6 +30,12 @@ To publish one route:
 env PUBLISHING_API_BEARER_TOKEN=abc bundle exec rake publish_one_route["/base-path"]
 ```
 
+See "[Publish special routes](https://docs.publishing.service.gov.uk/manual/publish-special-routes.html)" for quick links to the Jenkins jobs that invoke the rake tasks above.
+
+## Deployment
+
+This app isn't deployed anywhere. The repository is [cloned by the Jenkins jobs](https://github.com/alphagov/govuk-puppet/blob/30e80a538682dec8d6c3ed77c71c22596ba61347/modules/govuk_jenkins/templates/jobs/publish_special_routes.yaml.erb#L6), so any new changes are immediately picked up by the rake tasks.
+
 ## Licence
 
 [MIT License](LICENCE)
