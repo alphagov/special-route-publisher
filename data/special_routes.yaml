@@ -35,51 +35,6 @@
   :title: 'Remove a saved page'
   :rendering_app: 'frontend'
 
-- :content_id: '74738e19-d036-48a4-9a35-d0bc40e3fcbc'
-  :base_path: '/transition-check/questions'
-  :title: 'Transition period: check what you need to do now'
-  :rendering_app: 'finder-frontend'
-
-- :content_id: '7deab9d4-3a41-42e0-b069-6e20b854eb4b'
-  :base_path: '/transition-check/results'
-  :title: 'Transition period: check what you need to do now'
-  :rendering_app: 'finder-frontend'
-
-- :content_id: '14640462-c09e-45be-ac09-2e1e13a100fa'
-  :base_path: '/transition-check/email-signup'
-  :title: 'Transition period: sign up for email alerts'
-  :rendering_app: 'finder-frontend'
-
-- :content_id: 'c8a24981-e4ea-478d-97a9-2d3d8700fc5e'
-  :base_path: '/transition-check/save-your-results'
-  :title: 'Transition period: save results to GOV.UK Account'
-  :rendering_app: 'finder-frontend'
-
-- :content_id: '6bce862e-8f1d-4e57-ad6d-c475ed3411b5'
-  :base_path: '/transition-check/save-your-results/sign-up'
-  :title: 'Transition period: save results to GOV.UK Account'
-  :rendering_app: 'finder-frontend'
-
-- :content_id: '5f2330c0-345c-4329-9677-d2cbe578da3e'
-  :base_path: '/transition-check/save-your-results/confirm'
-  :title: 'Transition period: save results to GOV.UK Account'
-  :rendering_app: 'finder-frontend'
-
-- :content_id: 'bd1255f0-9332-456a-8abb-833cd9877f72'
-  :base_path: '/transition-check/save-your-results/email-signup'
-  :title: 'Transition period: save results to GOV.UK Account'
-  :rendering_app: 'finder-frontend'
-
-- :content_id: 'b3395546-3a26-4321-93ae-adea88722014'
-  :base_path: '/transition-check/saved-results'
-  :title: 'Transition period: retrieve results from GOV.UK Account'
-  :rendering_app: 'finder-frontend'
-
-- :content_id: '6c8ace7e-d00d-430b-a71a-86a3cbbab0cb'
-  :base_path: '/transition-check/edit-saved-results'
-  :title: 'Transition period: edit results from GOV.UK Account'
-  :rendering_app: 'finder-frontend'
-
 - :content_id: '5a0ca87e-0e91-4d4c-bd26-29feb24f98ab'
   :base_path: '/government/uploads'
   :title: 'Government Uploads'
