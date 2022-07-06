@@ -41,3 +41,8 @@
   :description: 'Handles government uploads paths.'
   :type: 'prefix'
   :rendering_app: 'government-frontend'
+
+- :content_id: 'eb56dbca-be0b-4381-8dac-0c9de8a3ed7e'
+  :base_path: '/search/latest'
+  :title: 'Search'
+  :rendering_app: 'finder-frontend'
