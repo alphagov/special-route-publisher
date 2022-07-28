@@ -46,8 +46,3 @@
   :base_path: '/search/latest'
   :title: 'Search'
   :rendering_app: 'finder-frontend'
-
-- :content_id: '34761d23-eafa-4025-82bf-0d127e06e8be'
-  :base_path: '/contact/govuk/request-accessible-format'
-  :rendering_app: 'feedback'
-  :title: 'Request accessible format'
