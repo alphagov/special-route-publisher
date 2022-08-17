@@ -20,6 +20,12 @@
   :type: 'prefix'
   :rendering_app: 'content-store'
 
+- :content_id: '740772f4-7aa4-4f55-aab6-0fba188dc517'
+  :base_path: '/cost-of-living'
+  :title: 'Cost of living support'
+  :description: 'Find out what support is available to help with the cost of living. This includes income and disability benefits, bills and allowances, childcare, housing and transport.'
+  :rendering_app: 'collections'
+
 - :content_id: '5a0ca87e-0e91-4d4c-bd26-29feb24f98ab'
   :base_path: '/government/uploads'
   :title: 'Government Uploads'
