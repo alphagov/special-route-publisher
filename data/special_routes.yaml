@@ -1,25 +1,3 @@
-- :content_id: '16ca5ac1-7df5-4137-9f83-0270fcfc8bb5'
-  :base_path: '/api/content'
-  :title: 'Content API'
-  :description: 'API exposing all content on GOV.UK.'
-  :type: 'prefix'
-  :rendering_app: 'content-store'
-
-- :content_id: 'b6bb372b-3c4e-4a21-98a6-ffbf2ea5dc9e'
-  :base_path: '/sign-in'
-  :title: 'Sign In to GOV.UK'
-  :rendering_app: 'frontend'
-
-- :content_id: 'f04c45a7-c20b-4f66-a485-dc997a6a3b6d'
-  :base_path: '/sign-in/callback'
-  :title: 'Sign In to GOV.UK (OAuth Callback)'
-  :rendering_app: 'frontend'
-
-- :content_id: '7ee16fff-900d-4f5d-bd0a-62fdaa1ad3b6'
-  :base_path: '/sign-out'
-  :title: 'Sign Out from GOV.UK'
-  :rendering_app: 'frontend'
-
 - :content_id: 'c1f08359-21f7-49c1-8811-54bf6690b6a3'
   :base_path: '/account/home'
   :title: 'Account home page'
@@ -35,6 +13,19 @@
   :title: 'Remove a saved page'
   :rendering_app: 'frontend'
 
+- :content_id: '16ca5ac1-7df5-4137-9f83-0270fcfc8bb5'
+  :base_path: '/api/content'
+  :title: 'Content API'
+  :description: 'API exposing all content on GOV.UK.'
+  :type: 'prefix'
+  :rendering_app: 'content-store'
+
+- :content_id: '740772f4-7aa4-4f55-aab6-0fba188dc517'
+  :base_path: '/cost-of-living'
+  :title: 'Cost of living support'
+  :description: 'Find out what support is available to help with the cost of living. This includes income and disability benefits, bills and allowances, childcare, housing and transport.'
+  :rendering_app: 'collections'
+
 - :content_id: '5a0ca87e-0e91-4d4c-bd26-29feb24f98ab'
   :base_path: '/government/uploads'
   :title: 'Government Uploads'
@@ -46,3 +37,18 @@
   :base_path: '/search/latest'
   :title: 'Search'
   :rendering_app: 'finder-frontend'
+
+- :content_id: 'b6bb372b-3c4e-4a21-98a6-ffbf2ea5dc9e'
+  :base_path: '/sign-in'
+  :title: 'Sign In to GOV.UK'
+  :rendering_app: 'frontend'
+
+- :content_id: 'f04c45a7-c20b-4f66-a485-dc997a6a3b6d'
+  :base_path: '/sign-in/callback'
+  :title: 'Sign In to GOV.UK (OAuth Callback)'
+  :rendering_app: 'frontend'
+
+- :content_id: '7ee16fff-900d-4f5d-bd0a-62fdaa1ad3b6'
+  :base_path: '/sign-out'
+  :title: 'Sign Out from GOV.UK'
+  :rendering_app: 'frontend'
