@@ -38,11 +38,6 @@
   :title: 'Search'
   :rendering_app: 'finder-frontend'
 
-- :content_id: 'b6bb372b-3c4e-4a21-98a6-ffbf2ea5dc9e'
-  :base_path: '/sign-in'
-  :title: 'Sign In to GOV.UK'
-  :rendering_app: 'frontend'
-
 - :content_id: 'f04c45a7-c20b-4f66-a485-dc997a6a3b6d'
   :base_path: '/sign-in/callback'
   :title: 'Sign In to GOV.UK (OAuth Callback)'
