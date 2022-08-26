@@ -14,7 +14,24 @@ You can use the [GOV.UK Docker environment](https://github.com/alphagov/govuk-do
 bundle exec rake
 ```
 
-## Running the rake tasks
+## Adding new routes
+
+Add an entry to `/data/special_routes.yaml`, for example:
+
+```
+- :content_id: 'c1f08359-21f7-49c1-8811-54bf6690b6a3'
+  :base_path: '/account/home'
+  :title: 'Account home page'
+  :rendering_app: 'frontend'
+```
+
+You can generate a new value for `content_id` by running `SecureRandom.uuid` in a ruby console.
+
+### NOTE
+
+If there is any other route published at that base_path by another app, that will get overridden by [routes published here](https://github.com/alphagov/special-route-publisher/blob/a74101c47fffd80123efbfd1d095398a40bdc594/lib/special_route_publisher.rb#L46-L54).
+
+## Publishing routes
 
 _You will need to start Publishing API and Content Store to run the following commands locally._
 
