@@ -1,5 +1,15 @@
 require_relative "lib/special_route_publisher"
 
+begin
+  require "rubocop/rake_task"
+  require "rspec/core/rake_task"
+
+  RuboCop::RakeTask.new
+  RSpec::Core::RakeTask.new(:spec)
+rescue LoadError
+  # These gems will fail to load outside of dev/test environments
+end
+
 desc "Publish special routes to the Publishing API"
 task :publish_special_routes do
   SpecialRoutePublisher.publish_special_routes
@@ -15,14 +25,4 @@ task :unpublish_one_special_route, [:base_path, :alternative_path] do |_, args|
   SpecialRoutePublisher.unpublish_one_route(args.base_path, args.alternative_path)
 end
 
-desc "Run tests"
-task :spec do
-  sh "bundle exec rspec"
-end
-
-desc "Lint ruby"
-task :lint do
-  sh "bundle exec rubocop --format clang"
-end
-
-task default: %i[spec lint]
+task default: %i[rubocop spec]

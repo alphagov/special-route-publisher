@@ -24,7 +24,7 @@ class SpecialRoutePublisher
       new.publishing_api.unpublish(
         route.fetch(:content_id),
         type: "redirect",
-        alternative_path: alternative_path,
+        alternative_path:,
       )
     elsif route
       new.publishing_api.unpublish(
@@ -65,7 +65,7 @@ class SpecialRoutePublisher
         routes: [
           {
             path: route.fetch(:base_path),
-            type: type,
+            type:,
           },
         ],
         publishing_app: "special-route-publisher",
