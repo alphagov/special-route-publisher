@@ -55,3 +55,13 @@
   :base_path: '/sign-out'
   :title: 'Sign Out from GOV.UK'
   :rendering_app: 'frontend'
+
+- :content_id: '93f4dedc-f8a1-4ff4-9a61-fb1b5c5acaa5'
+  :base_path: '/government/history/past-foreign-secretaries'
+  :title: 'Past foreign secretaries pages'
+  :description: 'Handles pages for past foreign secretaries.'
+  :type: 'prefix'
+  :rendering_app: 'whitehall-frontend'
+  :links:
+    :parent:
+      - 'e46b25e9-d47f-4b93-8466-682b73627db3'
