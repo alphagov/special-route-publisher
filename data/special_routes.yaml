@@ -34,6 +34,15 @@
     :parent:
       - 'db95a864-874f-4f50-a483-352a5bc7ba18'
 
+- :content_id: 'e46b25e9-d47f-4b93-8466-682b73627db3'
+  :base_path: '/government/history/past-foreign-secretaries'
+  :title: 'Past Foreign Secretaries'
+  :type: 'prefix'
+  :rendering_app: 'whitehall-frontend'
+  :links:
+    :parent:
+      - 'db95a864-874f-4f50-a483-352a5bc7ba18'
+
 - :content_id: '5a0ca87e-0e91-4d4c-bd26-29feb24f98ab'
   :base_path: '/government/uploads'
   :title: 'Government Uploads'
