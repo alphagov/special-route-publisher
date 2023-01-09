@@ -74,6 +74,11 @@ class SpecialRoutePublisher
         update_type: route.fetch(:update_type, "major"),
       )
 
+      publishing_api.patch_links(
+        route.fetch(:content_id),
+        links: route.fetch(:links, {}),
+      )
+
       publishing_api.publish(route.fetch(:content_id))
     rescue KeyError => e
       logger.error("Unable to publish #{route} due to an error: #{e}")

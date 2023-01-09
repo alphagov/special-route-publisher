@@ -19,6 +19,11 @@ RSpec.describe SpecialRoutePublisher, "#publish_special_routes" do
         description: "API exposing all content on GOV.UK.",
         type: "prefix",
         rendering_app: "content-store",
+        links: {
+          parent: %w[
+            718d2881-3f19-44c2-acf0-3e91dc20f220
+          ],
+        },
       }
     end
 
@@ -45,11 +50,20 @@ RSpec.describe SpecialRoutePublisher, "#publish_special_routes" do
     context "with a valid route" do
       let(:routes) { [api_content_route] }
 
-      it "calls the Publishing API to reserve a path, put content and publish it" do
+      it "calls the Publishing API to reserve a path, put content, patch links and publish it" do
         stub_put_path = stub_request(:put, "#{publishing_api_endpoint}/paths#{api_content_route.fetch(:base_path)}")
           .with(body: "{\"publishing_app\":\"special-route-publisher\",\"override_existing\":true}")
 
         stub_put_content = stub_request(:put, "#{publishing_api_endpoint}/v2/content/#{api_content_route.fetch(:content_id)}")
+
+        stub_patch_links = stub_request(:patch, "#{publishing_api_endpoint}/v2/links/#{api_content_route.fetch(:content_id)}")
+          .with(body: {
+            links: {
+              parent: %w[
+                718d2881-3f19-44c2-acf0-3e91dc20f220
+              ],
+            },
+          }.to_json)
 
         stub_publish_content = stub_request(:post, "#{publishing_api_endpoint}/v2/content/#{api_content_route.fetch(:content_id)}/publish")
           .with(body: "{\"update_type\":null}")
@@ -60,6 +74,7 @@ RSpec.describe SpecialRoutePublisher, "#publish_special_routes" do
 
         expect(stub_put_path).to have_been_requested
         expect(stub_put_content).to have_been_requested
+        expect(stub_patch_links).to have_been_requested
         expect(stub_publish_content).to have_been_requested
       end
 
