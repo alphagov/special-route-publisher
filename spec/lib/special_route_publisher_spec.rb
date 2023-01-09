@@ -47,12 +47,17 @@ RSpec.describe SpecialRoutePublisher, "#publish_special_routes" do
 
       it "calls the Publishing API to reserve a path, put content and publish it" do
         stub_put_path = stub_request(:put, "#{publishing_api_endpoint}/paths#{api_content_route.fetch(:base_path)}")
-          .with(body: "{\"publishing_app\":\"special-route-publisher\",\"override_existing\":true}")
+          .with(body: {
+            publishing_app: "special-route-publisher",
+            override_existing: true,
+          }.to_json)
 
         stub_put_content = stub_request(:put, "#{publishing_api_endpoint}/v2/content/#{api_content_route.fetch(:content_id)}")
 
         stub_publish_content = stub_request(:post, "#{publishing_api_endpoint}/v2/content/#{api_content_route.fetch(:content_id)}/publish")
-          .with(body: "{\"update_type\":null}")
+          .with(body: {
+            update_type: nil,
+          }.to_json)
 
         expect(logger).to receive(:info).with(/Publishing/)
 
@@ -79,6 +84,49 @@ RSpec.describe SpecialRoutePublisher, "#publish_special_routes" do
           expect(stub_put_content).to have_been_requested
         end
       end
+
+      context "with links" do
+        let(:links) do
+          {
+            parent: %w[
+              718d2881-3f19-44c2-acf0-3e91dc20f220
+            ],
+          }
+        end
+
+        it "calls patch links" do
+          api_content_route[:links] = links
+
+          stub_put_path = stub_request(:put, "#{publishing_api_endpoint}/paths#{api_content_route.fetch(:base_path)}")
+            .with(body: {
+              publishing_app: "special-route-publisher",
+              override_existing: true,
+            }.to_json)
+
+          stub_put_content = stub_request(:put, "#{publishing_api_endpoint}/v2/content/#{api_content_route.fetch(:content_id)}")
+
+          stub_patch_links = stub_request(:patch, "#{publishing_api_endpoint}/v2/links/#{api_content_route.fetch(:content_id)}")
+            .with(body: {
+              links: {
+                parent: %w[
+                  718d2881-3f19-44c2-acf0-3e91dc20f220
+                ],
+              },
+            }.to_json)
+
+          stub_publish_content = stub_request(:post, "#{publishing_api_endpoint}/v2/content/#{api_content_route.fetch(:content_id)}/publish")
+            .with(body: {
+              update_type: nil,
+            }.to_json)
+
+          described_class.publish_special_routes
+
+          expect(stub_put_path).to have_been_requested
+          expect(stub_put_content).to have_been_requested
+          expect(stub_patch_links).to have_been_requested
+          expect(stub_publish_content).to have_been_requested
+        end
+      end
     end
 
     context "with an invalid route" do
@@ -96,7 +144,9 @@ RSpec.describe SpecialRoutePublisher, "#publish_special_routes" do
 
       it "unpublishes the named route" do
         stub_unpublish = stub_request(:post, "#{publishing_api_endpoint}/v2/content/#{typeless_route[:content_id]}/unpublish")
-          .with(body: "{\"type\":\"gone\"}")
+          .with(body: {
+            type: "gone",
+          }.to_json)
 
         described_class.unpublish_one_route(typeless_route[:base_path])
 
@@ -106,7 +156,10 @@ RSpec.describe SpecialRoutePublisher, "#publish_special_routes" do
       it "redirects the route" do
         alternative_path = "/hello-there"
         stub_unpublish = stub_request(:post, "#{publishing_api_endpoint}/v2/content/#{typeless_route[:content_id]}/unpublish")
-          .with(body: "{\"type\":\"redirect\",\"alternative_path\":\"#{alternative_path}\"}")
+          .with(body: {
+            type: "redirect",
+            alternative_path:,
+          }.to_json)
 
         described_class.unpublish_one_route(typeless_route[:base_path], alternative_path)
 
