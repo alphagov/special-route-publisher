@@ -29,7 +29,7 @@
 - :content_id: 'ac47f738-b6c3-4369-8d22-ce143c947442'
   :base_path: '/government/history/past-chancellors'
   :title: 'Past Chancellors of the Exchequer'
-  :rendering_app: 'whitehall-frontend'
+  :rendering_app: 'collections'
   :links:
     :parent:
       - 'db95a864-874f-4f50-a483-352a5bc7ba18'
