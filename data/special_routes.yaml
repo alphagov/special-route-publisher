@@ -38,7 +38,7 @@
   :base_path: '/government/history/past-foreign-secretaries'
   :title: 'Past Foreign Secretaries'
   :type: 'prefix'
-  :rendering_app: 'whitehall-frontend'
+  :rendering_app: 'collections'
   :links:
     :parent:
       - 'db95a864-874f-4f50-a483-352a5bc7ba18'
