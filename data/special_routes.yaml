@@ -58,7 +58,7 @@
 - :content_id: "b3fbd4e1-40dc-4f53-8c1f-d7e24bb61ee2"
   :base_path: "/licence-finder/licences-api"
   :title: "Licence Data API"
-  :rendering_app: "licence-finder"
+  :rendering_app: "licencefinder"
 
 - :content_id: "f04c45a7-c20b-4f66-a485-dc997a6a3b6d"
   :base_path: "/sign-in/callback"
