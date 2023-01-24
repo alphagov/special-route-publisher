@@ -1,66 +1,71 @@
-- :content_id: 'c1f08359-21f7-49c1-8811-54bf6690b6a3'
-  :base_path: '/account/home'
-  :title: 'Account home page'
-  :rendering_app: 'frontend'
+- :content_id: "c1f08359-21f7-49c1-8811-54bf6690b6a3"
+  :base_path: "/account/home"
+  :title: "Account home page"
+  :rendering_app: "frontend"
 
-- :content_id: 'e5098fc2-ad79-4c6f-882b-410831c12f60'
-  :base_path: '/account/saved-pages/add'
-  :title: 'Save a page'
-  :rendering_app: 'frontend'
+- :content_id: "e5098fc2-ad79-4c6f-882b-410831c12f60"
+  :base_path: "/account/saved-pages/add"
+  :title: "Save a page"
+  :rendering_app: "frontend"
 
-- :content_id: '3aeaeb46-b3c5-449b-8a3b-2753ffef3c9f'
-  :base_path: '/account/saved-pages/remove'
-  :title: 'Remove a saved page'
-  :rendering_app: 'frontend'
+- :content_id: "3aeaeb46-b3c5-449b-8a3b-2753ffef3c9f"
+  :base_path: "/account/saved-pages/remove"
+  :title: "Remove a saved page"
+  :rendering_app: "frontend"
 
-- :content_id: '16ca5ac1-7df5-4137-9f83-0270fcfc8bb5'
-  :base_path: '/api/content'
-  :title: 'Content API'
-  :description: 'API exposing all content on GOV.UK.'
-  :type: 'prefix'
-  :rendering_app: 'content-store'
+- :content_id: "16ca5ac1-7df5-4137-9f83-0270fcfc8bb5"
+  :base_path: "/api/content"
+  :title: "Content API"
+  :description: "API exposing all content on GOV.UK."
+  :type: "prefix"
+  :rendering_app: "content-store"
 
-- :content_id: '740772f4-7aa4-4f55-aab6-0fba188dc517'
-  :base_path: '/cost-of-living'
-  :title: 'Cost of living support'
-  :description: 'Find out what support is available to help with the cost of living. This includes income and disability benefits, bills and allowances, childcare, housing and transport.'
-  :rendering_app: 'collections'
+- :content_id: "740772f4-7aa4-4f55-aab6-0fba188dc517"
+  :base_path: "/cost-of-living"
+  :title: "Cost of living support"
+  :description: "Find out what support is available to help with the cost of living. This includes income and disability benefits, bills and allowances, childcare, housing and transport."
+  :rendering_app: "collections"
 
-- :content_id: 'ac47f738-b6c3-4369-8d22-ce143c947442'
-  :base_path: '/government/history/past-chancellors'
-  :title: 'Past Chancellors of the Exchequer'
-  :rendering_app: 'collections'
+- :content_id: "ac47f738-b6c3-4369-8d22-ce143c947442"
+  :base_path: "/government/history/past-chancellors"
+  :title: "Past Chancellors of the Exchequer"
+  :rendering_app: "collections"
   :links:
     :parent:
-      - 'db95a864-874f-4f50-a483-352a5bc7ba18'
+      - "db95a864-874f-4f50-a483-352a5bc7ba18"
 
-- :content_id: 'e46b25e9-d47f-4b93-8466-682b73627db3'
-  :base_path: '/government/history/past-foreign-secretaries'
-  :title: 'Past Foreign Secretaries'
-  :type: 'prefix'
-  :rendering_app: 'collections'
+- :content_id: "e46b25e9-d47f-4b93-8466-682b73627db3"
+  :base_path: "/government/history/past-foreign-secretaries"
+  :title: "Past Foreign Secretaries"
+  :type: "prefix"
+  :rendering_app: "collections"
   :links:
     :parent:
-      - 'db95a864-874f-4f50-a483-352a5bc7ba18'
+      - "db95a864-874f-4f50-a483-352a5bc7ba18"
 
-- :content_id: '5a0ca87e-0e91-4d4c-bd26-29feb24f98ab'
-  :base_path: '/government/uploads'
-  :title: 'Government Uploads'
-  :description: 'Handles government uploads paths.'
-  :type: 'prefix'
-  :rendering_app: 'government-frontend'
+- :content_id: "5a0ca87e-0e91-4d4c-bd26-29feb24f98ab"
+  :base_path: "/government/uploads"
+  :title: "Government Uploads"
+  :description: "Handles government uploads paths."
+  :type: "prefix"
+  :rendering_app: "government-frontend"
 
-- :content_id: 'eb56dbca-be0b-4381-8dac-0c9de8a3ed7e'
-  :base_path: '/search/latest'
-  :title: 'Search'
-  :rendering_app: 'finder-frontend'
+- :content_id: "eb56dbca-be0b-4381-8dac-0c9de8a3ed7e"
+  :base_path: "/search/latest"
+  :title: "Search"
+  :rendering_app: "finder-frontend"
 
-- :content_id: 'f04c45a7-c20b-4f66-a485-dc997a6a3b6d'
-  :base_path: '/sign-in/callback'
-  :title: 'Sign In to GOV.UK (OAuth Callback)'
-  :rendering_app: 'frontend'
+- :content_id: "b3fbd4e1-40dc-4f53-8c1f-d7e24bb61ee2"
+  :base_path: "/licence-finder/licences-api"
+  :title: "Licence Data API"
+  :rendering_app: "licence-finder"
 
-- :content_id: '7ee16fff-900d-4f5d-bd0a-62fdaa1ad3b6'
-  :base_path: '/sign-out'
-  :title: 'Sign Out from GOV.UK'
-  :rendering_app: 'frontend'
+- :content_id: "f04c45a7-c20b-4f66-a485-dc997a6a3b6d"
+  :base_path: "/sign-in/callback"
+  :title: "Sign In to GOV.UK (OAuth Callback)"
+  :rendering_app: "frontend"
+
+- :content_id: "7ee16fff-900d-4f5d-bd0a-62fdaa1ad3b6"
+  :base_path: "/sign-out"
+  :title: "Sign Out from GOV.UK"
+  :rendering_app: "frontend"
