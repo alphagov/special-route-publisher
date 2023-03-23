@@ -181,6 +181,10 @@ RSpec.describe SpecialRoutePublisher, "#publish_special_routes" do
 
         expect(stub_unreserve_path).to have_been_requested
       end
+
+      it "raises an error if the route does not exist" do
+        expect { described_class.unpublish_one_route("/bad-route") }.to raise_error
+      end
     end
   end
 end
