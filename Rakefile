@@ -20,9 +20,11 @@ task :publish_one_special_route, [:base_path] do |_, args|
   SpecialRoutePublisher.publish_one_route(args.base_path)
 end
 
-desc "Unpublish a single special route, with a type of 'gone' or 'redirect'"
-task :unpublish_one_special_route, [:base_path, :alternative_path] do |_, args|
-  SpecialRoutePublisher.unpublish_one_route(args.base_path, args.alternative_path)
+desc "Unpublish a single special route, with a type of 'gone' or 'redirect' and unreserve path set to true or false (default)"
+task :unpublish_one_special_route, [:base_path, :alternative_path, :unreserve_path] do |_, args|
+  unreserve_path = true if args.unreserve_path&.downcase == "true"
+
+  SpecialRoutePublisher.unpublish_one_route(args.base_path, args.alternative_path, unreserve_path:)
 end
 
 task default: %i[rubocop spec]

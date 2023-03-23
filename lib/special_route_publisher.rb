@@ -17,7 +17,7 @@ class SpecialRoutePublisher
     end
   end
 
-  def self.unpublish_one_route(base_path, alternative_path = nil)
+  def self.unpublish_one_route(base_path, alternative_path = nil, unreserve_path: false)
     route = load_special_routes.find { |r| r[:base_path] == base_path }
 
     if route && alternative_path
@@ -33,6 +33,10 @@ class SpecialRoutePublisher
       )
     else
       puts "Route needs to be added to /data/special_routes.yaml"
+    end
+
+    if route && unreserve_path
+      new.publishing_api.unreserve_path(route.fetch(:base_path), "special-route-publisher")
     end
   end
 

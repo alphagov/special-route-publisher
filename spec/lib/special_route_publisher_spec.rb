@@ -165,6 +165,22 @@ RSpec.describe SpecialRoutePublisher, "#publish_special_routes" do
 
         expect(stub_unpublish).to have_been_requested
       end
+
+      it "unreserves the base path" do
+        stub_request(:post, "#{publishing_api_endpoint}/v2/content/#{typeless_route[:content_id]}/unpublish")
+          .with(body: {
+            type: "gone",
+          }.to_json)
+
+        stub_unreserve_path = stub_request(:delete, "#{publishing_api_endpoint}/paths#{typeless_route[:base_path]}")
+          .with(body: {
+            publishing_app: "special-route-publisher",
+          })
+
+        described_class.unpublish_one_route(typeless_route[:base_path], unreserve_path: true)
+
+        expect(stub_unreserve_path).to have_been_requested
+      end
     end
   end
 end
