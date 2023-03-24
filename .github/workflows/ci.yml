@@ -1,11 +1,23 @@
-on: [push, pull_request]
+name: CI
+
+on:
+  workflow_dispatch: {}
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - ".git**"
+  pull_request:
 
 jobs:
+  lint-ruby:
+    name: Lint Ruby
+    uses: alphagov/govuk-infrastructure/.github/workflows/rubocop.yml@main
+
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-
+      - uses: actions/checkout@v3
       - uses: ruby/setup-ruby@v1
       - uses: actions/cache@v1
         with:
