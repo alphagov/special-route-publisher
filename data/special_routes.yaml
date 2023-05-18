@@ -44,6 +44,16 @@
   :type: "prefix"
   :rendering_app: "government-frontend"
 
+- :content_id: "c3b020bf-bc77-4213-afa2-b45eac30f2dc"
+  :base_path: "/search/consultations"
+  :title: "Policy papers and consultations"
+  :rendering_app: "finder-frontend"
+
+- :content_id: "e38cc2da-cea5-4585-9aaa-454c109a51e0"
+  :base_path: "/search/statistics-announcements"
+  :title: "Research and statistics"
+  :rendering_app: "finder-frontend"
+
 - :content_id: "eb56dbca-be0b-4381-8dac-0c9de8a3ed7e"
   :base_path: "/search/latest"
   :title: "Search"
