@@ -72,16 +72,16 @@ token=$(bundle exec rake eyaml:decrypt_value\[$env,govuk_jenkins::jobs::publish_
 Finally, run the rake task in a new kubernetes pod. As special-route-publisher isn't deployed anywhere, you need to specify the image name. Also you must make sure that `PLEK_USE_HTTP_FOR_SINGLE_LABEL_DOMAINS` and `PUBLISHING_API_BEARER_TOKEN` are set:
 
 ```
-kubectl run -napps --image 172025368201.dkr.ecr.eu-west-1.amazonaws.com/special-route-publisher $USER-special-route-pub -- sh -c "GOVUK_APP_DOMAIN= PLEK_USE_HTTP_FOR_SINGLE_LABEL_DOMAINS=1 PUBLISHING_API_BEARER_TOKEN=$token rake publish_special_routes"
+kubectl run -napps --image 172025368201.dkr.ecr.eu-west-1.amazonaws.com/special-route-publisher ${USER/./-}-special-route-pub -- sh -c "GOVUK_APP_DOMAIN= PLEK_USE_HTTP_FOR_SINGLE_LABEL_DOMAINS=1 PUBLISHING_API_BEARER_TOKEN=$token rake publish_special_routes"
 ```
 
 Use the `[]` notation to pass parameters to a task, for example:
 
 ```
-kubectl run -napps --image 172025368201.dkr.ecr.eu-west-1.amazonaws.com/special-route-publisher $USER-special-route-pub -- sh -c "GOVUK_APP_DOMAIN= PLEK_USE_HTTP_FOR_SINGLE_LABEL_DOMAINS=1 PUBLISHING_API_BEARER_TOKEN=$token rake publish_one_special_route['/government/history/past-chancellors']"
+kubectl run -napps --image 172025368201.dkr.ecr.eu-west-1.amazonaws.com/special-route-publisher ${USER/./-}-special-route-pub -- sh -c "GOVUK_APP_DOMAIN= PLEK_USE_HTTP_FOR_SINGLE_LABEL_DOMAINS=1 PUBLISHING_API_BEARER_TOKEN=$token rake publish_one_special_route['/government/history/past-chancellors']"
 ```
 
-N.B. In these examples, `$USER` is just being used to set the name of the kubernetes pod.
+N.B. In these examples, `$USER` is just being used to set the name of the kubernetes pod. (Note that pod names cannot contain a period, so we substitute a dash for any periods in your username)
 
 ## Deployment
 
