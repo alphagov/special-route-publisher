@@ -60,7 +60,7 @@ class SpecialRoutePublisher
         schema_name: route.fetch(:document_type, "special_route"),
         title: route.fetch(:title),
         description: route.fetch(:description, ""),
-        locale: "en",
+        locale: route.fetch(:locale, "en"),
         details: {},
         routes: [
           {

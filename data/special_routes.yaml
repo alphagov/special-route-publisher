@@ -68,3 +68,22 @@
   :base_path: "/sign-out"
   :title: "Sign Out from GOV.UK"
   :rendering_app: "frontend"
+
+- :content_id: "58f79dbd-e57f-4ab2-ae96-96df5767d1b2"
+  :title: "UK bank holidays"
+  :description: "Find out when bank holidays are in England, Wales, Scotland and Northern Ireland - including past and future bank holidays"
+  :base_path: "/bank-holidays"
+  :rendering_app: "frontend"
+
+- :content_id: "58f79dbd-e57f-4ab2-ae96-96df5767d1b2"
+  :title: "Gwyliau banc y DU"
+  :description: "Dysgwch pryd mae gwyliau'r banc yng Nghymru, Lloegr, yr Alban a Gogledd Iwerddon - gan gynnwys gwyliau banc yn y gorffennol a'r dyfodol"
+  :base_path: "/gwyliau-banc"
+  :rendering_app: "frontend"
+  :locale: "cy"
+
+- :content_id: "41c78b38-f70e-4729-815b-680f9b90db30"
+  :title: "When do the clocks change?"
+  :description: "Dates when the clocks go back or forward in 2020, 2021, 2022 - includes British Summer Time, Greenwich Mean Time"
+  :base_path: "/when-do-the-clocks-change"
+  :rendering_app: "frontend"
