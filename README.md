@@ -69,7 +69,7 @@ env=integration
 token=$(bundle exec rake eyaml:decrypt_value\[$env,govuk_jenkins::jobs::publish_special_routes::publishing_api_bearer_token])
 ```
 
-Finally, run the rake task in a new kubernetes pod. As special-route-publisher isn't deployed anywhere, you need to specify the image name. Also you must make sure that `PLEK_USE_HTTP_FOR_SINGLE_LABEL_DOMAINS` and `PUBLISHING_API_BEARER_TOKEN` are set:
+Then, run the rake task in a new kubernetes pod. As special-route-publisher isn't deployed anywhere, you need to specify the image name. Also you must make sure that `PLEK_USE_HTTP_FOR_SINGLE_LABEL_DOMAINS` and `PUBLISHING_API_BEARER_TOKEN` are set:
 
 ```
 kubectl run -napps --image 172025368201.dkr.ecr.eu-west-1.amazonaws.com/special-route-publisher ${USER/./-}-special-route-pub -- sh -c "GOVUK_APP_DOMAIN= PLEK_USE_HTTP_FOR_SINGLE_LABEL_DOMAINS=1 PUBLISHING_API_BEARER_TOKEN=$token rake publish_special_routes"
@@ -81,11 +81,32 @@ Use the `[]` notation to pass parameters to a task, for example:
 kubectl run -napps --image 172025368201.dkr.ecr.eu-west-1.amazonaws.com/special-route-publisher ${USER/./-}-special-route-pub -- sh -c "GOVUK_APP_DOMAIN= PLEK_USE_HTTP_FOR_SINGLE_LABEL_DOMAINS=1 PUBLISHING_API_BEARER_TOKEN=$token rake publish_one_special_route['/government/history/past-chancellors']"
 ```
 
+Finally, delete your pod when it has finished running:
+
+```
+kubectl run -napps delete pod ${USER/./-}-special-route-pub
+```
+
 N.B. In these examples, `$USER` is just being used to set the name of the kubernetes pod. (Note that pod names cannot contain a period, so we substitute a dash for any periods in your username)
 
 ## Deployment
 
-This app isn't deployed anywhere, so any new changes are immediately picked up by the rake tasks.
+This app doesn't run anywhere. When it goes through the github deploy action, the image is published to the image registry. When this happens from the main branch,
+the image is tagged as 'latest' and will be the version picked when you spin the container up as detailed in the "Publishing routes on EKS" section above.
+
+## Testing a branch on integration
+
+If you want to test publishing special routes from code that is not merged into the main branch, first deploy your branch using the normal github actions flow. Note as above that this does not actually deploy an application anywhere.
+
+Grab the release tag for the pushed image from the github actions logs. This should be listed at the end of the "Push image" section, and will look something like: `release-[some-sha]`
+
+Then follow the instructions in the "Publishing routes on EKS" section above, but when you spin up the new pod, append the release tag to the end of the image name, separated by a colon.
+
+E.g. to publish all the routes:
+
+```
+kubectl run -napps --image 172025368201.dkr.ecr.eu-west-1.amazonaws.com/special-route-publisher:release-[some-sha] ${USER/./-}-special-route-pub -- sh -c "GOVUK_APP_DOMAIN= PLEK_USE_HTTP_FOR_SINGLE_LABEL_DOMAINS=1 PUBLISHING_API_BEARER_TOKEN=$token rake publish_special_routes"
+```
 
 ## Licence
 
