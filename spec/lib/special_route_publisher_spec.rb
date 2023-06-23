@@ -129,6 +129,64 @@ RSpec.describe SpecialRoutePublisher, "#publish_special_routes" do
       end
     end
 
+    context "with a locale" do
+      let(:api_content_route_with_locale) { api_content_route.merge(locale: "cy") }
+
+      let(:routes) { [api_content_route_with_locale] }
+
+      it "calls the Publishing API with the provided locale" do
+        stub_put_path = stub_request(:put, "#{publishing_api_endpoint}/paths#{api_content_route_with_locale.fetch(:base_path)}")
+                                .with(body: {
+                                  publishing_app: "special-route-publisher",
+                                  override_existing: true,
+                                }.to_json)
+
+        stub_put_content = stub_request(:put, "#{publishing_api_endpoint}/v2/content/#{api_content_route_with_locale.fetch(:content_id)}")
+                             .with(body: hash_including(locale: "cy"))
+
+        stub_publish_content = stub_request(:post, "#{publishing_api_endpoint}/v2/content/#{api_content_route_with_locale.fetch(:content_id)}/publish")
+                                       .with(body: {
+                                         update_type: nil,
+                                       }.to_json)
+
+        expect(logger).to receive(:info).with(/Publishing/)
+
+        described_class.publish_special_routes
+
+        expect(stub_put_path).to have_been_requested
+        expect(stub_put_content).to have_been_requested
+        expect(stub_publish_content).to have_been_requested
+      end
+    end
+
+    context "without a locale" do
+      let(:routes) { [api_content_route] }
+
+      it "defaults to English locale when a locale is not provided" do
+        stub_put_path =  stub_request(:put, "#{publishing_api_endpoint}/paths#{api_content_route.fetch(:base_path)}")
+                                .with(body: {
+                                  publishing_app: "special-route-publisher",
+                                  override_existing: true,
+                                }.to_json)
+
+        stub_put_content = stub_request(:put, "#{publishing_api_endpoint}/v2/content/#{api_content_route.fetch(:content_id)}")
+                             .with(body: hash_including(locale: "en"))
+
+        stub_publish_content = stub_request(:post, "#{publishing_api_endpoint}/v2/content/#{api_content_route.fetch(:content_id)}/publish")
+                                       .with(body: {
+                                         update_type: nil,
+                                       }.to_json)
+
+        expect(logger).to receive(:info).with(/Publishing/)
+
+        described_class.publish_special_routes
+
+        expect(stub_put_path).to have_been_requested
+        expect(stub_put_content).to have_been_requested
+        expect(stub_publish_content).to have_been_requested
+      end
+    end
+
     context "with an invalid route" do
       let(:routes) { [invalid_route] }
 
