@@ -10,7 +10,7 @@ rescue LoadError
   # These gems will fail to load outside of dev/test environments
 end
 
-desc "Publish special routes to the Publishing API"
+desc "Publish special routes (except the homepage) to the Publishing API"
 task :publish_special_routes do
   SpecialRoutePublisher.publish_special_routes
 end
@@ -23,6 +23,11 @@ end
 desc "Unpublish a single special route, with a type of 'gone' or 'redirect'"
 task :unpublish_one_special_route, [:base_path, :alternative_path] do |_, args|
   SpecialRoutePublisher.unpublish_one_route(args.base_path, args.alternative_path)
+end
+
+desc "Publish the homepage to the Publishing API"
+task :publish_homepage do
+  SpecialRoutePublisher.publish_homepage
 end
 
 task default: %i[rubocop spec]

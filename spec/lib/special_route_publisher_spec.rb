@@ -38,12 +38,12 @@ RSpec.describe SpecialRoutePublisher, "#publish_special_routes" do
       }
     end
 
-    before do
-      allow(SpecialRoutePublisher).to receive(:load_special_routes).and_return(routes)
-    end
-
     context "with a valid route" do
       let(:routes) { [api_content_route] }
+
+      before do
+        allow(SpecialRoutePublisher).to receive(:load_special_routes).and_return(routes)
+      end
 
       it "calls the Publishing API to reserve a path, put content and publish it" do
         stub_put_path = stub_request(:put, "#{publishing_api_endpoint}/paths#{api_content_route.fetch(:base_path)}")
@@ -132,6 +132,10 @@ RSpec.describe SpecialRoutePublisher, "#publish_special_routes" do
     context "with an invalid route" do
       let(:routes) { [invalid_route] }
 
+      before do
+        allow(SpecialRoutePublisher).to receive(:load_special_routes).and_return(routes)
+      end
+
       it "logs an error message and carries on" do
         expect(logger).to receive(:error).with(/Unable/)
 
@@ -141,6 +145,10 @@ RSpec.describe SpecialRoutePublisher, "#publish_special_routes" do
 
     context "unpublishing a route" do
       let(:routes) { [api_content_route, typeless_route] }
+
+      before do
+        allow(SpecialRoutePublisher).to receive(:load_special_routes).and_return(routes)
+      end
 
       it "unpublishes the named route" do
         stub_unpublish = stub_request(:post, "#{publishing_api_endpoint}/v2/content/#{typeless_route[:content_id]}/unpublish")
@@ -164,6 +172,42 @@ RSpec.describe SpecialRoutePublisher, "#publish_special_routes" do
         described_class.unpublish_one_route(typeless_route[:base_path], alternative_path)
 
         expect(stub_unpublish).to have_been_requested
+      end
+    end
+
+    context "hompage publishing" do
+      it "publishes the homepage" do
+        homepage_path = "/"
+        homepage_content_id = "f3bbdec2-0e62-4520-a7fd-6ffd5d36e03a"
+        gds_content_id = "af07d5a5-df63-4ddc-9383-6a666845ebe9"
+
+        stub_put_path = stub_request(:put, "#{publishing_api_endpoint}/paths#{homepage_path}")
+                          .with(body: {
+                            publishing_app: "special-route-publisher",
+                            override_existing: true,
+                          }.to_json)
+
+        stub_put_content = stub_request(:put, "#{publishing_api_endpoint}/v2/content/#{homepage_content_id}")
+
+        stub_patch_links = stub_request(:patch, "#{publishing_api_endpoint}/v2/links/#{homepage_content_id}")
+                             .with(body: {
+                               links: {
+                                 organisations: [gds_content_id],
+                                 primary_publishing_organisation: [gds_content_id],
+                               },
+                             }.to_json)
+
+        stub_publish_content = stub_request(:post, "#{publishing_api_endpoint}/v2/content/#{homepage_content_id}/publish")
+                                 .with(body: {
+                                   update_type: nil,
+                                 }.to_json)
+
+        described_class.publish_homepage
+
+        expect(stub_put_path).to have_been_requested
+        expect(stub_put_content).to have_been_requested
+        expect(stub_patch_links).to have_been_requested
+        expect(stub_publish_content).to have_been_requested
       end
     end
   end
