@@ -59,14 +59,10 @@ export AWS_REGION=eu-west-1
 kubectl config use-context integration
 ```
 
-Then you need to get the publishing-api bearer token from secrets:
+Then you need to get the publishing-api bearer token from the kubernetes secret (you may need to `brew install yq`):
 
 ```
-cd govuk-secrets/puppet_aws
-
-env=integration
-
-token=$(bundle exec rake eyaml:decrypt_value\[$env,govuk_jenkins::jobs::publish_special_routes::publishing_api_bearer_token])
+token=$(kubectl -napps get secret signon-token-special-route-publisher-publishing-api -oyaml | yq .data.bearer_token | base64 -d)
 ```
 
 Then, run the rake task in a new kubernetes pod. As special-route-publisher isn't deployed anywhere, you need to specify the image name. Also you must make sure that `PLEK_USE_HTTP_FOR_SINGLE_LABEL_DOMAINS` and `PUBLISHING_API_BEARER_TOKEN` are set:
@@ -81,11 +77,13 @@ Use the `[]` notation to pass parameters to a task, for example:
 kubectl run -napps --image 172025368201.dkr.ecr.eu-west-1.amazonaws.com/special-route-publisher ${USER/./-}-special-route-pub -- sh -c "GOVUK_APP_DOMAIN= PLEK_USE_HTTP_FOR_SINGLE_LABEL_DOMAINS=1 PUBLISHING_API_BEARER_TOKEN=$token rake publish_one_special_route['/government/history/past-chancellors']"
 ```
 
-Finally, delete your pod when it has finished running:
+Important: finally, delete your pod when it has finished running:
 
 ```
 kubectl run -napps delete pod ${USER/./-}-special-route-pub
 ```
+
+This is especially important if your pod is in a `CrashLoopBackoff` state (usually when something has gone run with publishing). Leaving it in existence in this state will lead to continuous re-running of the rake task you specified, which can lead to continuous republishing.
 
 N.B. In these examples, `$USER` is just being used to set the name of the kubernetes pod. (Note that pod names cannot contain a period, so we substitute a dash for any periods in your username)
 
