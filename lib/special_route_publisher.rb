@@ -36,6 +36,10 @@ class SpecialRoutePublisher
     end
   end
 
+  def self.publish_homepage
+    new.publish_routes(load_homepage)
+  end
+
   def publish_routes(routes)
     time = (Time.respond_to?(:zone) && Time.zone) || Time
     routes.each do |route|
@@ -89,6 +93,10 @@ class SpecialRoutePublisher
 
   def self.load_special_routes
     YAML.load_file("./data/special_routes.yaml")
+  end
+
+  def self.load_homepage
+    YAML.load_file("./data/homepage.yaml")
   end
 
   def logger
