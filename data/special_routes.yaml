@@ -114,3 +114,10 @@
   :description: "Find your local authority in England, Wales, Scotland and Northern Ireland"
   :rendering_app: "frontend"
   :type: "prefix"
+
+- :content_id: "6e92af59-3a73-4db6-b58b-740a02b229d0"
+  :base_path: "/humans.txt"
+  :title: "humans.txt"
+  :description: "In opposition to robots.txt, humans.txt provides information about GOV.UK to interested readers, such as developers interested in joining GDS."
+  :rendering_app: "static"
+  :override_existing: true
