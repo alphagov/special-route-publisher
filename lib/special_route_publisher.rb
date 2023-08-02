@@ -7,6 +7,16 @@ class SpecialRoutePublisher
     new.publish_routes(load_special_routes)
   end
 
+  def self.publish_special_routes_for_app(app_name)
+    routes = load_special_routes.filter { |r| r[:rendering_app] == app_name }
+
+    if routes.any?
+      new.publish_routes(routes)
+    else
+      puts "No routes for #{app_name} in /data/special_routes.yaml"
+    end
+  end
+
   def self.publish_one_route(base_path)
     route = load_special_routes.find { |r| r[:base_path] == base_path }
 

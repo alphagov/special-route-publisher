@@ -15,6 +15,11 @@ task :publish_special_routes do
   SpecialRoutePublisher.publish_special_routes
 end
 
+desc "Publish all special routes for a single application to the Publishing API"
+task :publish_special_routes_for_app, [:app_name] do |_, args|
+  SpecialRoutePublisher.publish_special_routes_for_app(args.app_name)
+end
+
 desc "Publish a single special route to the Publishing API"
 task :publish_one_special_route, [:base_path] do |_, args|
   SpecialRoutePublisher.publish_one_route(args.base_path)
