@@ -175,6 +175,14 @@ RSpec.describe SpecialRoutePublisher, "#publish_special_routes" do
       end
     end
 
+    context "publishing for one app" do
+      it "only publishes all routes for that app" do
+        expect_any_instance_of(described_class).to receive(:publish_route).exactly(6).times.with(hash_including(rendering_app: "email-alert-frontend"), anything)
+        expect_any_instance_of(described_class).not_to receive(:publish_route).with(hash_including(rendering_app: "content-store"), anything)
+        described_class.publish_special_routes_for_app("email-alert-frontend")
+      end
+    end
+
     context "hompage publishing" do
       it "publishes the homepage" do
         homepage_path = "/"

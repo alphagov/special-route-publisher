@@ -41,11 +41,30 @@ To publish all routes:
 env PUBLISHING_API_BEARER_TOKEN=abc bundle exec rake publish_special_routes
 ```
 
+To publish all routes for one application:
+
+```
+env PUBLISHING_API_BEARER_TOKEN=abc bundle exec rake publish_one_route[email-alert-frontend]
+```
+
 To publish one route:
 
 ```
-env PUBLISHING_API_BEARER_TOKEN=abc bundle exec rake publish_one_route["/base-path"]
+env PUBLISHING_API_BEARER_TOKEN=abc bundle exec rake publish_one_route[/base-path]
 ```
+
+To unpublish one route so it will return Gone:
+
+```
+env PUBLISHING_API_BEARER_TOKEN=abc bundle exec rake unpublish_one_route[/base-path]
+```
+
+To unpublish one route so it will return Redirect:
+
+```
+env PUBLISHING_API_BEARER_TOKEN=abc bundle exec rake unpublish_one_route[/base-path,/new-base-path]
+```
+
 
 ## Publishing routes on EKS
 
@@ -74,7 +93,7 @@ kubectl run -napps --image 172025368201.dkr.ecr.eu-west-1.amazonaws.com/special-
 Use the `[]` notation to pass parameters to a task, for example:
 
 ```
-kubectl run -napps --image 172025368201.dkr.ecr.eu-west-1.amazonaws.com/special-route-publisher ${USER/./-}-special-route-pub -- sh -c "GOVUK_APP_DOMAIN= PLEK_USE_HTTP_FOR_SINGLE_LABEL_DOMAINS=1 PUBLISHING_API_BEARER_TOKEN=$token rake publish_one_special_route['/government/history/past-chancellors']"
+kubectl run -napps --image 172025368201.dkr.ecr.eu-west-1.amazonaws.com/special-route-publisher ${USER/./-}-special-route-pub -- sh -c "GOVUK_APP_DOMAIN= PLEK_USE_HTTP_FOR_SINGLE_LABEL_DOMAINS=1 PUBLISHING_API_BEARER_TOKEN=$token rake publish_one_special_route[/government/history/past-chancellors]"
 ```
 
 Important: finally, delete your pod when it has finished running:
