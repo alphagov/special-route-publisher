@@ -40,7 +40,14 @@
 - :content_id: "5a0ca87e-0e91-4d4c-bd26-29feb24f98ab"
   :base_path: "/government/uploads"
   :title: "Government Uploads"
-  :description: "Handles government uploads paths."
+  :description: "Handles redirects for /government/uploads path for asset manager"
+  :type: "prefix"
+  :rendering_app: "government-frontend"
+
+- :content_id: "cdcad470-21c6-4e19-b644-9e499de1ad12"
+  :base_path: "/media"
+  :title: "Government Uploads"
+  :description: "Handles redirects for /media/:id/:filename path for asset manager"
   :type: "prefix"
   :rendering_app: "government-frontend"
 
