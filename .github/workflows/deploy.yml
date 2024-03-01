@@ -24,3 +24,4 @@ jobs:
       gitRef: ${{ inputs.gitRef || github.ref }}
     permissions:
       id-token: write
+      contents: read
