@@ -20,30 +20,17 @@ class SpecialRoutePublisher
   def self.publish_one_route(base_path)
     route = load_special_routes.find { |r| r[:base_path] == base_path }
 
-    if route
-      new.publish_routes([route])
-    else
-      puts "Route needs to be added to /data/special_routes.yaml"
-    end
+    raise "Route needs to be added to /data/special_routes.yaml" unless route
+
+    new.publish_routes([route])
   end
 
-  def self.unpublish_one_route(base_path, alternative_path = nil)
+  def self.unpublish_one_route(base_path, alternative_path = nil, unreserve_path: false)
     route = load_special_routes.find { |r| r[:base_path] == base_path }
 
-    if route && alternative_path
-      new.publishing_api.unpublish(
-        route.fetch(:content_id),
-        type: "redirect",
-        alternative_path:,
-      )
-    elsif route
-      new.publishing_api.unpublish(
-        route.fetch(:content_id),
-        type: "gone",
-      )
-    else
-      puts "Route needs to be added to /data/special_routes.yaml"
-    end
+    raise "Route needs to be added to /data/special_routes.yaml" unless route
+
+    new.unpublish_route(route, alternative_path, unreserve_path)
   end
 
   def self.publish_homepage
@@ -103,6 +90,37 @@ class SpecialRoutePublisher
     rescue KeyError => e
       logger.error("Unable to publish #{route} due to an error: #{e}")
     end
+
+    logger.info("SUCCESS! #{routes} published")
+  end
+
+  def unpublish_route(route, alternative_path, unreserve_path)
+    base_path = route.fetch(:base_path)
+    content_id = route.fetch(:content_id)
+
+    if alternative_path
+      publishing_api.unpublish(
+        content_id,
+        type: "redirect",
+        alternative_path:,
+      )
+
+      logger.info("Path #{base_path} unpublished and redirected to #{alternative_path}")
+    else
+      publishing_api.unpublish(
+        content_id,
+        type: "gone",
+      )
+
+      logger.info("Path #{base_path} unpublished")
+    end
+
+    if unreserve_path
+      publishing_api.unreserve_path(base_path, "special-route-publisher")
+      logger.info("Path #{base_path} unreserved")
+    end
+
+    logger.info("SUCCESS!")
   end
 
   def self.load_special_routes
