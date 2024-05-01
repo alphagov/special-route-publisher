@@ -1,3 +1,5 @@
+require "simplecov"
+SimpleCov.start
 require "webmock/rspec"
 
 RSpec.configure do |config|
