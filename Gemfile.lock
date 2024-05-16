@@ -27,7 +27,7 @@ GEM
     docile (1.4.0)
     domain_name (0.6.20240107)
     drb (2.2.1)
-    gds-api-adapters (95.1.0)
+    gds-api-adapters (96.0.0)
       addressable
       link_header
       null_logger
@@ -46,7 +46,7 @@ GEM
     method_source (1.0.0)
     mime-types (3.5.2)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2024.0305)
+    mime-types-data (3.2024.0507)
     minitest (5.22.3)
     mutex_m (0.2.0)
     netrc (0.11.0)
