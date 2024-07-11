@@ -87,13 +87,13 @@ token=$(kubectl -napps get secret signon-token-special-route-publisher-publishin
 Then, run the rake task in a new kubernetes pod. As special-route-publisher isn't deployed anywhere, you need to specify the image name. Also you must make sure that `PLEK_USE_HTTP_FOR_SINGLE_LABEL_DOMAINS` and `PUBLISHING_API_BEARER_TOKEN` are set:
 
 ```
-kubectl run -napps --image 172025368201.dkr.ecr.eu-west-1.amazonaws.com/special-route-publisher ${USER/./-}-special-route-pub -- sh -c "GOVUK_APP_DOMAIN= PLEK_USE_HTTP_FOR_SINGLE_LABEL_DOMAINS=1 PUBLISHING_API_BEARER_TOKEN=$token rake publish_special_routes"
+kubectl run -napps --image 172025368201.dkr.ecr.eu-west-1.amazonaws.com/github/alphagov/govuk/special-route-publisher ${USER/./-}-special-route-pub -- sh -c "GOVUK_APP_DOMAIN= PLEK_USE_HTTP_FOR_SINGLE_LABEL_DOMAINS=1 PUBLISHING_API_BEARER_TOKEN=$token rake publish_special_routes"
 ```
 
 Use the `[]` notation to pass parameters to a task, for example:
 
 ```
-kubectl run -napps --image 172025368201.dkr.ecr.eu-west-1.amazonaws.com/special-route-publisher ${USER/./-}-special-route-pub -- sh -c "GOVUK_APP_DOMAIN= PLEK_USE_HTTP_FOR_SINGLE_LABEL_DOMAINS=1 PUBLISHING_API_BEARER_TOKEN=$token rake publish_one_special_route[/government/history/past-chancellors]"
+kubectl run -napps --image 172025368201.dkr.ecr.eu-west-1.amazonaws.com/github/alphagov/govuk/special-route-publisher ${USER/./-}-special-route-pub -- sh -c "GOVUK_APP_DOMAIN= PLEK_USE_HTTP_FOR_SINGLE_LABEL_DOMAINS=1 PUBLISHING_API_BEARER_TOKEN=$token rake publish_one_special_route[/government/history/past-chancellors]"
 ```
 
 Important: finally, delete your pod when it has finished running:
@@ -122,7 +122,7 @@ Then follow the instructions in the "Publishing routes on EKS" section above, bu
 E.g. to publish all the routes:
 
 ```
-kubectl run -napps --image 172025368201.dkr.ecr.eu-west-1.amazonaws.com/special-route-publisher:release-[some-sha] ${USER/./-}-special-route-pub -- sh -c "GOVUK_APP_DOMAIN= PLEK_USE_HTTP_FOR_SINGLE_LABEL_DOMAINS=1 PUBLISHING_API_BEARER_TOKEN=$token rake publish_special_routes"
+kubectl run -napps --image 172025368201.dkr.ecr.eu-west-1.amazonaws.com/github/alphagov/govuk/special-route-publisher:release-[some-sha] ${USER/./-}-special-route-pub -- sh -c "GOVUK_APP_DOMAIN= PLEK_USE_HTTP_FOR_SINGLE_LABEL_DOMAINS=1 PUBLISHING_API_BEARER_TOKEN=$token rake publish_special_routes"
 ```
 
 ## Licence
